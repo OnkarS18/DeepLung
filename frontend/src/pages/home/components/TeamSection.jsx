@@ -1,0 +1,282 @@
+import Card from "../../../components/base/Card";
+
+export default function TeamSection() {
+  const teamMembers = [
+    {
+      name: "Ritesh",
+      role: "Project Lead & AI Architect",
+      specialization: "Deep Learning & Model Development",
+      responsibilities: [
+        "Project coordination and leadership",
+        "AI model architecture design",
+        "Deep learning implementation",
+        "Performance optimization",
+      ],
+      skills: [
+        "TensorFlow",
+        "PyTorch",
+        "Computer Vision",
+        "Project Management",
+      ],
+      avatar:
+        "https://static.readdy.ai/image/77259ccf12976e7ede23528ca3b8551d/c167732c369446d5c158f816247e7dcd.jfif",
+      needsPhoto: false,
+    },
+    {
+      name: "Sanvihita",
+      role: "Data Scientist & Research Specialist",
+      specialization: "Medical Data Analysis & Research",
+      responsibilities: [
+        "Medical literature review",
+        "Dataset curation and analysis",
+        "Research methodology design",
+        "Statistical analysis and validation",
+      ],
+      skills: [
+        "Data Science",
+        "Medical Imaging",
+        "Research",
+        "Statistical Analysis",
+      ],
+      avatar:
+        "https://readdy.ai/api/search-image?query=Professional%20headshot%20of%20young%20Indian%20female%20computer%20science%20student%2C%20intelligent%20expression%2C%20clean%20background%2C%20formal%20attire%2C%20engineering%20student%20portrait%2C%20academic%20professional%20photo&width=300&height=300&seq=team-sanvihita&orientation=squarish",
+    },
+    {
+      name: "Onkar",
+      role: "Backend Developer & System Architect",
+      specialization: "System Integration & Security",
+      responsibilities: [
+        "Backend system development",
+        "Database design and optimization",
+        "Security implementation",
+        "API development and integration",
+      ],
+      skills: ["Python", "Flask/Django", "PostgreSQL", "Cloud Computing"],
+      avatar:
+        "https://readdy.ai/api/search-image?query=Professional%20headshot%20of%20young%20Indian%20male%20computer%20science%20student%2C%20focused%20expression%2C%20clean%20background%2C%20formal%20attire%2C%20engineering%20student%20portrait%2C%20academic%20professional%20photo&width=300&height=300&seq=team-onkar&orientation=squarish",
+    },
+    {
+      name: "Pratiksha",
+      role: "Frontend Developer & UI/UX Designer",
+      specialization: "User Interface & Experience Design",
+      responsibilities: [
+        "User interface design and development",
+        "User experience optimization",
+        "Frontend implementation",
+        "Responsive design and testing",
+      ],
+      skills: ["React.js", "UI/UX Design", "TypeScript", "Responsive Design"],
+      avatar:
+        "https://readdy.ai/api/search-image?query=Professional%20headshot%20of%20young%20Indian%20female%20computer%20science%20student%2C%20creative%20expression%2C%20clean%20background%2C%20formal%20attire%2C%20engineering%20student%20portrait%2C%20academic%20professional%20photo&width=300&height=300&seq=team-pratiksha&orientation=squarish",
+    },
+  ];
+
+  const guide = {
+    name: "Dr. Aswathy M. A.",
+    title: "Project Guide & Supervisor",
+    position: "Associate Professor",
+    department: "Department of Electronics & Telecommunication Engineering",
+    expertise: [
+      "Artificial Intelligence & Machine Learning",
+      "Medical Image Processing",
+      "Deep Learning Applications",
+      "Research Methodology",
+    ],
+    avatar:
+      "https://static.readdy.ai/image/77259ccf12976e7ede23528ca3b8551d/1b76aefd3a627f339b16e90c294340ac.png",
+  };
+
+  return (
+    <section
+      id="team"
+      className="py-20 bg-gradient-to-br from-blue-50 via-white to-green-50"
+    >
+      <div className="container mx-auto px-6">
+        <div className="text-center mb-16">
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-800 mb-6">
+            Our Team
+          </h2>
+          <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
+            A dedicated team of Electronics & Telecommunication Engineering
+            students working under expert guidance to develop innovative AI
+            solutions for healthcare challenges.
+          </p>
+        </div>
+
+        {/* Project Guide */}
+        <div className="mb-16">
+          <Card className="p-8 max-w-4xl mx-auto hover-lift medical-shadow">
+            <div className="text-center mb-8">
+              <h3 className="text-2xl font-bold text-gray-800 mb-2">
+                Project Guide
+              </h3>
+              <p className="text-gray-600">
+                Expert supervision and academic guidance
+              </p>
+            </div>
+
+            <div className="flex flex-col md:flex-row items-center md:items-start space-y-6 md:space-y-0 md:space-x-8">
+              <div className="flex-shrink-0">
+                <img
+                  src={guide.avatar}
+                  alt={guide.name}
+                  className="w-32 h-32 rounded-full object-cover border-4 border-gradient-to-r from-blue-200 to-green-200 shadow-lg"
+                />
+              </div>
+
+              <div className="flex-1 text-center md:text-left">
+                <h4 className="text-2xl font-bold text-gray-800 mb-2">
+                  {guide.name}
+                </h4>
+                <p className="text-blue-600 font-semibold mb-1">
+                  {guide.title}
+                </p>
+                <p className="text-gray-600 mb-2">{guide.position}</p>
+                <p className="text-gray-500 text-sm mb-4">{guide.department}</p>
+
+                <div>
+                  <h5 className="font-semibold text-gray-800 mb-3">
+                    Areas of Expertise:
+                  </h5>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
+                    {guide.expertise.map((area, index) => (
+                      <div key={index} className="flex items-center space-x-2">
+                        <div className="w-2 h-2 bg-gradient-to-r from-blue-500 to-green-500 rounded-full"></div>
+                        <span className="text-gray-600 text-sm">{area}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </Card>
+        </div>
+
+        {/* Team Members */}
+        <div>
+          <div className="text-center mb-12">
+            <h3 className="text-3xl font-bold text-gray-800 mb-4">
+              Student Team Members
+            </h3>
+            <p className="text-gray-600">
+              B.Tech Electronics & Telecommunication Engineering Students
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {teamMembers.map((member, index) => (
+              <Card
+                key={index}
+                className="p-6 text-center hover-lift medical-shadow transition-all duration-300 hover:scale-105"
+              >
+                <div className="mb-6 relative">
+                  <img
+                    src={member.avatar}
+                    alt={member.name}
+                    className="w-24 h-24 rounded-full object-cover mx-auto border-4 border-gradient-to-r from-blue-100 to-green-100 shadow-lg"
+                  />
+
+                  {member.needsPhoto && (
+                    <div className="absolute -top-2 -right-2">
+                      <div className="w-6 h-6 bg-orange-500 rounded-full flex items-center justify-center animate-pulse">
+                        <i className="ri-camera-line text-white text-xs"></i>
+                      </div>
+                    </div>
+                  )}
+                </div>
+
+                <h4 className="text-xl font-bold text-gray-800 mb-2">
+                  {member.name}
+                </h4>
+                <p className="text-blue-600 font-semibold mb-1">
+                  {member.role}
+                </p>
+                <p className="text-gray-600 text-sm mb-4">
+                  {member.specialization}
+                </p>
+
+                <div className="mb-4">
+                  <h5 className="font-semibold text-gray-800 mb-2 text-sm">
+                    Key Responsibilities:
+                  </h5>
+                  <ul className="space-y-1">
+                    {member.responsibilities.map(
+                      (responsibility, respIndex) => (
+                        <li
+                          key={respIndex}
+                          className="text-gray-600 text-xs leading-relaxed"
+                        >
+                          • {responsibility}
+                        </li>
+                      ),
+                    )}
+                  </ul>
+                </div>
+
+                <div>
+                  <h5 className="font-semibold text-gray-800 mb-2 text-sm">
+                    Technical Skills:
+                  </h5>
+                  <div className="flex flex-wrap gap-1 justify-center">
+                    {member.skills.map((skill, skillIndex) => (
+                      <span
+                        key={skillIndex}
+                        className="bg-gradient-to-r from-blue-100 to-green-100 text-blue-800 px-2 py-1 rounded-full text-xs hover:from-blue-200 hover:to-green-200 transition-all"
+                      >
+                        {skill}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </Card>
+            ))}
+          </div>
+        </div>
+
+        {/* Team Statistics */}
+        <div className="mt-16">
+          <Card className="p-8 medical-shadow">
+            <h3 className="text-2xl font-bold text-gray-800 text-center mb-8">
+              Team Achievements
+            </h3>
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+              <div className="text-center hover-lift">
+                <div className="w-16 h-16 bg-gradient-to-r from-blue-100 to-blue-200 rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
+                  <i className="ri-trophy-line text-blue-600 text-2xl"></i>
+                </div>
+                <h4 className="text-2xl font-bold text-gray-800 mb-2">24</h4>
+                <p className="text-gray-600">Weeks of Development</p>
+              </div>
+
+              <div className="text-center hover-lift">
+                <div className="w-16 h-16 bg-gradient-to-r from-green-100 to-green-200 rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
+                  <i className="ri-code-s-slash-line text-green-600 text-2xl"></i>
+                </div>
+                <h4 className="text-2xl font-bold text-gray-800 mb-2">8000+</h4>
+                <p className="text-gray-600">Lines of Code</p>
+              </div>
+
+              <div className="text-center hover-lift">
+                <div className="w-16 h-16 bg-gradient-to-r from-purple-100 to-purple-200 rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
+                  <i className="ri-database-line text-purple-600 text-2xl"></i>
+                </div>
+                <h4 className="text-2xl font-bold text-gray-800 mb-2">
+                  15,000+
+                </h4>
+                <p className="text-gray-600">CT Scan Images Processed</p>
+              </div>
+
+              <div className="text-center hover-lift">
+                <div className="w-16 h-16 bg-gradient-to-r from-orange-100 to-orange-200 rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
+                  <i className="ri-test-tube-line text-orange-600 text-2xl"></i>
+                </div>
+                <h4 className="text-2xl font-bold text-gray-800 mb-2">96.2%</h4>
+                <p className="text-gray-600">Detection Accuracy</p>
+              </div>
+            </div>
+          </Card>
+        </div>
+      </div>
+    </section>
+  );
+}

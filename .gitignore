@@ -16,6 +16,6 @@
 Thumbs.db
 
 # Project specific
-temp_ts_compile/
-src/
+/temp_ts_compile/
+/src/
 *.tmp
