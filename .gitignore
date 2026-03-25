@@ -1,0 +1,21 @@
+# Node.js
+**/node_modules/
+**/dist/
+*.log
+
+# Environment variables
+.env
+.env.*
+
+# IDEs
+.vscode/
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Project specific
+temp_ts_compile/
+src/
+*.tmp
