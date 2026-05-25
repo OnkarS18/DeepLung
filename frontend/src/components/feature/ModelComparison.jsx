@@ -91,10 +91,10 @@ export default function ModelComparison() {
     <div className="space-y-6">
       <Card className="p-6">
         <div className="text-center mb-8">
-          <h2 className="text-3xl font-bold text-gray-800 mb-4">
+          <h2 className="text-3xl font-bold text-gray-800 dark:text-white mb-4">
             Model Performance Comparison
           </h2>
-          <p className="text-gray-600 max-w-3xl mx-auto">
+          <p className="text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
             Compare performance metrics across different deep learning
             architectures used in DeepLung. Each model brings unique strengths
             to our ensemble approach.
@@ -110,7 +110,7 @@ export default function ModelComparison() {
               className={`px-4 py-2 rounded-lg font-medium transition-all whitespace-nowrap cursor-pointer ${
                 selectedMetric === key
                   ? "bg-blue-600 text-white shadow-lg"
-                  : "bg-gray-100 text-gray-700 hover:bg-gray-200"
+                  : "bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600"
               }`}
             >
               {label}
@@ -120,10 +120,10 @@ export default function ModelComparison() {
 
         {/* Current Metric Info */}
         <div className="text-center mb-8">
-          <h3 className="text-xl font-semibold text-gray-800 mb-2">
+          <h3 className="text-xl font-semibold text-gray-800 dark:text-white mb-2">
             {metricLabels[selectedMetric]}
           </h3>
-          <p className="text-gray-600 max-w-2xl mx-auto">
+          <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
             {metricDescriptions[selectedMetric]}
           </p>
         </div>
@@ -137,11 +137,11 @@ export default function ModelComparison() {
                   <div
                     className={`w-4 h-4 rounded-full bg-gradient-to-r ${model.color}`}
                   ></div>
-                  <span className="font-medium text-gray-800">
+                  <span className="font-medium text-gray-800 dark:text-gray-200">
                     {model.name}
                   </span>
                 </div>
-                <span className="font-bold text-gray-800">
+                <span className="font-bold text-gray-800 dark:text-white">
                   {model[selectedMetric].toFixed(1)}%
                 </span>
               </div>
@@ -159,27 +159,27 @@ export default function ModelComparison() {
         </div>
 
         {/* Best Performer Highlight */}
-        <div className="bg-gradient-to-r from-yellow-50 to-orange-50 p-6 rounded-xl border border-yellow-200">
+        <div className="bg-gradient-to-r from-yellow-50 to-orange-50 dark:from-yellow-900/20 dark:to-orange-900/20 p-6 rounded-xl border border-yellow-200 dark:border-yellow-900/50 transition-colors duration-300">
           <div className="flex items-center space-x-3 mb-3">
-            <i className="ri-trophy-line text-yellow-600 text-2xl"></i>
-            <h4 className="text-lg font-semibold text-gray-800">
+            <i className="ri-trophy-line text-yellow-600 dark:text-yellow-400 text-2xl"></i>
+            <h4 className="text-lg font-semibold text-gray-800 dark:text-white">
               Best Performer: {getBestModel().name}
             </h4>
           </div>
-          <p className="text-gray-700 mb-2">
+          <p className="text-gray-700 dark:text-gray-300 mb-2">
             Achieves {getBestModel()[selectedMetric].toFixed(1)}%{" "}
             {selectedMetric} - {getBestModel().description}
           </p>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-4 text-sm">
             <div>
-              <span className="text-gray-600">Parameters:</span>
-              <span className="font-medium ml-2">
+              <span className="text-gray-600 dark:text-gray-400">Parameters:</span>
+              <span className="font-medium dark:text-white ml-2">
                 {getBestModel().parameters}
               </span>
             </div>
             <div>
-              <span className="text-gray-600">Training Time:</span>
-              <span className="font-medium ml-2">
+              <span className="text-gray-600 dark:text-gray-400">Training Time:</span>
+              <span className="font-medium dark:text-white ml-2">
                 {getBestModel().trainingTime}
               </span>
             </div>
@@ -198,46 +198,46 @@ export default function ModelComparison() {
                 <i className="ri-cpu-line text-white text-xl"></i>
               </div>
               <div>
-                <h4 className="text-lg font-semibold text-gray-800">
+                <h4 className="text-lg font-semibold text-gray-800 dark:text-white">
                   {model.name}
                 </h4>
-                <p className="text-sm text-gray-600">
+                <p className="text-sm text-gray-600 dark:text-gray-400">
                   {model.parameters} parameters
                 </p>
               </div>
             </div>
 
-            <p className="text-gray-600 mb-4 text-sm leading-relaxed">
+            <p className="text-gray-600 dark:text-gray-400 mb-4 text-sm leading-relaxed">
               {model.description}
             </p>
 
             <div className="grid grid-cols-2 gap-4 text-sm">
               <div className="space-y-2">
                 <div className="flex justify-between">
-                  <span className="text-gray-600">Accuracy:</span>
-                  <span className="font-medium">{model.accuracy}%</span>
+                  <span className="text-gray-600 dark:text-gray-400">Accuracy:</span>
+                  <span className="font-medium dark:text-gray-200">{model.accuracy}%</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-gray-600">Sensitivity:</span>
-                  <span className="font-medium">{model.sensitivity}%</span>
+                  <span className="text-gray-600 dark:text-gray-400">Sensitivity:</span>
+                  <span className="font-medium dark:text-gray-200">{model.sensitivity}%</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-gray-600">Specificity:</span>
-                  <span className="font-medium">{model.specificity}%</span>
+                  <span className="text-gray-600 dark:text-gray-400">Specificity:</span>
+                  <span className="font-medium dark:text-gray-200">{model.specificity}%</span>
                 </div>
               </div>
               <div className="space-y-2">
                 <div className="flex justify-between">
-                  <span className="text-gray-600">Precision:</span>
-                  <span className="font-medium">{model.precision}%</span>
+                  <span className="text-gray-600 dark:text-gray-400">Precision:</span>
+                  <span className="font-medium dark:text-gray-200">{model.precision}%</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-gray-600">F1-Score:</span>
-                  <span className="font-medium">{model.f1Score}%</span>
+                  <span className="text-gray-600 dark:text-gray-400">F1-Score:</span>
+                  <span className="font-medium dark:text-gray-200">{model.f1Score}%</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-gray-600">Training:</span>
-                  <span className="font-medium">{model.trainingTime}</span>
+                  <span className="text-gray-600 dark:text-gray-400">Training:</span>
+                  <span className="font-medium dark:text-gray-200">{model.trainingTime}</span>
                 </div>
               </div>
             </div>
@@ -247,42 +247,42 @@ export default function ModelComparison() {
 
       {/* Model Ensemble Explanation */}
       <Card className="p-6">
-        <h3 className="text-xl font-bold text-gray-800 mb-4">
+        <h3 className="text-xl font-bold text-gray-800 dark:text-white mb-4">
           Ensemble Strategy
         </h3>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           <div className="text-center">
-            <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-              <i className="ri-group-line text-blue-600 text-2xl"></i>
+            <div className="w-16 h-16 bg-blue-100 dark:bg-blue-900/40 rounded-full flex items-center justify-center mx-auto mb-4">
+              <i className="ri-group-line text-blue-600 dark:text-blue-400 text-2xl"></i>
             </div>
-            <h4 className="font-semibold text-gray-800 mb-2">
+            <h4 className="font-semibold text-gray-800 dark:text-white mb-2">
               Weighted Voting
             </h4>
-            <p className="text-gray-600 text-sm">
+            <p className="text-gray-600 dark:text-gray-400 text-sm">
               Each model contributes predictions based on its validation
               performance weights
             </p>
           </div>
           <div className="text-center">
-            <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-              <i className="ri-shield-check-line text-green-600 text-2xl"></i>
+            <div className="w-16 h-16 bg-green-100 dark:bg-green-900/40 rounded-full flex items-center justify-center mx-auto mb-4">
+              <i className="ri-shield-check-line text-green-600 dark:text-green-400 text-2xl"></i>
             </div>
-            <h4 className="font-semibold text-gray-800 mb-2">
+            <h4 className="font-semibold text-gray-800 dark:text-white mb-2">
               Uncertainty Reduction
             </h4>
-            <p className="text-gray-600 text-sm">
+            <p className="text-gray-600 dark:text-gray-400 text-sm">
               Multiple models reduce prediction uncertainty and improve
               reliability
             </p>
           </div>
           <div className="text-center">
-            <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
-              <i className="ri-line-chart-line text-purple-600 text-2xl"></i>
+            <div className="w-16 h-16 bg-purple-100 dark:bg-purple-900/40 rounded-full flex items-center justify-center mx-auto mb-4">
+              <i className="ri-line-chart-line text-purple-600 dark:text-purple-400 text-2xl"></i>
             </div>
-            <h4 className="font-semibold text-gray-800 mb-2">
+            <h4 className="font-semibold text-gray-800 dark:text-white mb-2">
               Performance Boost
             </h4>
-            <p className="text-gray-600 text-sm">
+            <p className="text-gray-600 dark:text-gray-400 text-sm">
               Ensemble achieves better performance than any individual model
               alone
             </p>

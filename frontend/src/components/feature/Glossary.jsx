@@ -147,13 +147,13 @@ export default function Glossary() {
   const getCategoryColor = (category) => {
     switch (category) {
       case "ai":
-        return "bg-blue-100 text-blue-800 border-blue-200";
+        return "bg-blue-100 dark:bg-blue-900/40 text-blue-800 dark:text-blue-300 border-blue-200 dark:border-blue-800";
       case "medical":
-        return "bg-green-100 text-green-800 border-green-200";
+        return "bg-green-100 dark:bg-green-900/40 text-green-800 dark:text-green-300 border-green-200 dark:border-green-800";
       case "technical":
-        return "bg-purple-100 text-purple-800 border-purple-200";
+        return "bg-purple-100 dark:bg-purple-900/40 text-purple-800 dark:text-purple-300 border-purple-200 dark:border-purple-800";
       default:
-        return "bg-gray-100 text-gray-800 border-gray-200";
+        return "bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-300 border-gray-200 dark:border-gray-700";
     }
   };
 
@@ -170,10 +170,10 @@ export default function Glossary() {
     <div className="space-y-6">
       <Card className="p-6">
         <div className="text-center mb-8">
-          <h2 className="text-3xl font-bold text-gray-800 mb-4">
+          <h2 className="text-3xl font-bold text-gray-800 dark:text-white mb-4">
             Medical AI Glossary
           </h2>
-          <p className="text-gray-600 max-w-2xl mx-auto">
+          <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
             Comprehensive definitions of medical, AI, and technical terms used
             in DeepLung. Search or browse by category to learn more.
           </p>
@@ -188,7 +188,7 @@ export default function Glossary() {
               placeholder="Search terms and definitions..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              className="w-full pl-10 pr-4 py-3 border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
             />
           </div>
 
@@ -200,7 +200,7 @@ export default function Glossary() {
                 className={`px-4 py-2 rounded-lg font-medium transition-all whitespace-nowrap cursor-pointer ${
                   selectedCategory === category.key
                     ? "bg-blue-600 text-white"
-                    : "bg-gray-100 text-gray-700 hover:bg-gray-200"
+                    : "bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 border border-transparent dark:border-gray-700"
                 }`}
               >
                 {category.label}
@@ -210,7 +210,7 @@ export default function Glossary() {
         </div>
 
         {/* Results Count */}
-        <div className="text-sm text-gray-600 mb-6">
+        <div className="text-sm text-gray-600 dark:text-gray-400 mb-6">
           Showing {filteredTerms.length} of {glossaryTerms.length} terms
           {searchTerm && ` for "${searchTerm}"`}
         </div>
@@ -221,7 +221,7 @@ export default function Glossary() {
         {filteredTerms.map((item, index) => (
           <Card key={index} className="p-6 hover" hover>
             <div className="flex items-start justify-between mb-3">
-              <h3 className="text-xl font-bold text-gray-800">{item.term}</h3>
+              <h3 className="text-xl font-bold text-gray-800 dark:text-white">{item.term}</h3>
               <span
                 className={`px-3 py-1 rounded-full text-xs font-medium border ${getCategoryColor(item.category)}`}
               >
@@ -229,20 +229,20 @@ export default function Glossary() {
               </span>
             </div>
 
-            <p className="text-gray-600 leading-relaxed mb-4">
+            <p className="text-gray-600 dark:text-gray-300 leading-relaxed mb-4">
               {item.definition}
             </p>
 
             {item.examples && item.examples.length > 0 && (
               <div>
-                <h4 className="font-semibold text-gray-800 mb-2 text-sm">
+                <h4 className="font-semibold text-gray-800 dark:text-white mb-2 text-sm">
                   Examples:
                 </h4>
                 <ul className="space-y-1">
                   {item.examples.map((example, exampleIndex) => (
                     <li
                       key={exampleIndex}
-                      className="flex items-start space-x-2 text-sm text-gray-600"
+                      className="flex items-start space-x-2 text-sm text-gray-600 dark:text-gray-400"
                     >
                       <div className="w-1.5 h-1.5 bg-blue-500 rounded-full mt-2 flex-shrink-0"></div>
                       <span>{example}</span>
@@ -258,10 +258,10 @@ export default function Glossary() {
       {filteredTerms.length === 0 && (
         <Card className="p-12 text-center">
           <i className="ri-search-line text-4xl text-gray-400 mb-4 block"></i>
-          <h3 className="text-xl font-semibold text-gray-700 mb-2">
+          <h3 className="text-xl font-semibold text-gray-700 dark:text-gray-300 mb-2">
             No terms found
           </h3>
-          <p className="text-gray-500">
+          <p className="text-gray-500 dark:text-gray-400">
             Try adjusting your search terms or selecting a different category.
           </p>
         </Card>
@@ -269,7 +269,7 @@ export default function Glossary() {
 
       {/* Quick Reference */}
       <Card className="p-6">
-        <h3 className="text-xl font-bold text-gray-800 mb-4">
+        <h3 className="text-xl font-bold text-gray-800 dark:text-white mb-4">
           Quick Reference
         </h3>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -277,7 +277,7 @@ export default function Glossary() {
             <h4 className="font-semibold text-blue-600 mb-3">
               AI Performance Metrics
             </h4>
-            <ul className="space-y-2 text-sm text-gray-600">
+            <ul className="space-y-2 text-sm text-gray-600 dark:text-gray-400">
               <li>• Accuracy: Overall correctness</li>
               <li>• Sensitivity: Disease detection rate</li>
               <li>• Specificity: Healthy identification rate</li>

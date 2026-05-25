@@ -39,7 +39,7 @@ export default function Auth() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-green-50">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-green-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 transition-colors duration-300">
       <Header />
 
       {/* Success Message */}
@@ -70,23 +70,23 @@ export default function Auth() {
                 className="w-full h-full object-contain"
               />
             </div>
-            <h1 className="text-3xl font-bold text-gray-800 mb-2">
+            <h1 className="text-3xl font-bold text-gray-800 dark:text-white mb-2">
               Welcome to DeepLung
             </h1>
-            <p className="text-gray-600">
+            <p className="text-gray-600 dark:text-gray-400">
               Access advanced AI-powered lung cancer detection tools
             </p>
           </div>
 
           <Card className="p-8 hover-lift medical-shadow">
             {/* Tab Navigation */}
-            <div className="flex space-x-1 bg-gray-100 rounded-lg p-1 mb-6">
+            <div className="flex space-x-1 bg-gray-100 dark:bg-gray-700/50 rounded-lg p-1 mb-6">
               <button
                 onClick={() => setActiveTab("signin")}
                 className={`flex-1 py-2 px-4 rounded-md text-sm font-medium transition-all whitespace-nowrap cursor-pointer ${
                   activeTab === "signin"
-                    ? "bg-white text-blue-600 shadow-sm"
-                    : "text-gray-600 hover:text-gray-800"
+                    ? "bg-white dark:bg-gray-700 text-blue-600 dark:text-blue-400 shadow-sm"
+                    : "text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200"
                 }`}
               >
                 Sign In
@@ -95,8 +95,8 @@ export default function Auth() {
                 onClick={() => setActiveTab("signup")}
                 className={`flex-1 py-2 px-4 rounded-md text-sm font-medium transition-all whitespace-nowrap cursor-pointer ${
                   activeTab === "signup"
-                    ? "bg-white text-blue-600 shadow-sm"
-                    : "text-gray-600 hover:text-gray-800"
+                    ? "bg-white dark:bg-gray-700 text-blue-600 dark:text-blue-400 shadow-sm"
+                    : "text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200"
                 }`}
               >
                 Sign Up
@@ -108,7 +108,7 @@ export default function Auth() {
               {activeTab === "signin" && (
                 <>
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">
+                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
                       Email Address
                     </label>
                     <input
@@ -116,13 +116,13 @@ export default function Auth() {
                       name="email"
                       value={formData.email}
                       onChange={handleInputChange}
-                      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+                      className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all outline-none"
                       placeholder="doctor@hospital.com"
                       required
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">
+                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
                       Password
                     </label>
                     <input
@@ -130,7 +130,7 @@ export default function Auth() {
                       name="password"
                       value={formData.password}
                       onChange={handleInputChange}
-                      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+                      className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all outline-none"
                       placeholder="••••••••"
                       required
                     />
@@ -139,16 +139,16 @@ export default function Auth() {
                     <label className="flex items-center">
                       <input
                         type="checkbox"
-                        className="rounded border-gray-300 text-blue-600 focus:ring-blue-500"
+                        className="rounded border-gray-300 dark:border-gray-600 text-blue-600 focus:ring-blue-500"
                       />
-                      <span className="ml-2 text-sm text-gray-600">
+                      <span className="ml-2 text-sm text-gray-600 dark:text-gray-400">
                         Remember me
                       </span>
                     </label>
                     <button
                       type="button"
                       onClick={() => setActiveTab("forgot")}
-                      className="text-sm text-blue-600 hover:text-blue-500 cursor-pointer"
+                      className="text-sm text-blue-600 dark:text-blue-400 hover:text-blue-500 cursor-pointer"
                     >
                       Forgot password?
                     </button>
@@ -165,7 +165,7 @@ export default function Auth() {
                 <>
                   <div className="grid grid-cols-2 gap-4">
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-1">
+                      <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
                         First Name
                       </label>
                       <input
@@ -173,13 +173,13 @@ export default function Auth() {
                         name="firstName"
                         value={formData.firstName}
                         onChange={handleInputChange}
-                        className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+                        className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all outline-none"
                         placeholder="John"
                         required
                       />
                     </div>
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-1">
+                      <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
                         Last Name
                       </label>
                       <input
@@ -187,14 +187,14 @@ export default function Auth() {
                         name="lastName"
                         value={formData.lastName}
                         onChange={handleInputChange}
-                        className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+                        className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all outline-none"
                         placeholder="Doe"
                         required
                       />
                     </div>
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">
+                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
                       Email Address
                     </label>
                     <input
@@ -202,13 +202,13 @@ export default function Auth() {
                       name="email"
                       value={formData.email}
                       onChange={handleInputChange}
-                      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+                      className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all outline-none"
                       placeholder="doctor@hospital.com"
                       required
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">
+                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
                       Organization
                     </label>
                     <input
@@ -216,20 +216,20 @@ export default function Auth() {
                       name="organization"
                       value={formData.organization}
                       onChange={handleInputChange}
-                      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+                      className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all outline-none"
                       placeholder="City General Hospital"
                       required
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">
+                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
                       Professional Role
                     </label>
                     <select
                       name="role"
                       value={formData.role}
                       onChange={handleInputChange}
-                      className="w-full px-3 py-2 pr-8 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+                      className="w-full px-3 py-2 pr-8 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all outline-none"
                       required
                     >
                       <option value="doctor">Medical Doctor</option>
@@ -242,21 +242,21 @@ export default function Auth() {
                   </div>
                   <div className="grid grid-cols-2 gap-4">
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-1">
-                        Password
-                      </label>
-                      <input
-                        type="password"
-                        name="password"
-                        value={formData.password}
-                        onChange={handleInputChange}
-                        className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
-                        placeholder="••••••••"
-                        required
-                      />
+                      <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                      Password
+                    </label>
+                    <input
+                      type="password"
+                      name="password"
+                      value={formData.password}
+                      onChange={handleInputChange}
+                      className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all outline-none"
+                      placeholder="••••••••"
+                      required
+                    />
                     </div>
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-1">
+                      <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
                         Confirm Password
                       </label>
                       <input
@@ -276,17 +276,17 @@ export default function Auth() {
                       name="agreeTerms"
                       checked={formData.agreeTerms}
                       onChange={handleInputChange}
-                      className="rounded border-gray-300 text-blue-600 focus:ring-blue-500 mt-1"
+                      className="rounded border-gray-300 dark:border-gray-600 text-blue-600 focus:ring-blue-500 mt-1 dark:bg-gray-700"
                       required
                     />
 
-                    <span className="ml-2 text-sm text-gray-600">
+                    <span className="ml-2 text-sm text-gray-600 dark:text-gray-400">
                       I agree to the{" "}
-                      <a href="#" className="text-blue-600 hover:text-blue-500">
+                      <a href="#" className="text-blue-600 dark:text-blue-400 hover:text-blue-500 transition-colors">
                         Terms of Service
                       </a>{" "}
                       and{" "}
-                      <a href="#" className="text-blue-600 hover:text-blue-500">
+                      <a href="#" className="text-blue-600 dark:text-blue-400 hover:text-blue-500 transition-colors">
                         Privacy Policy
                       </a>
                     </span>
@@ -369,12 +369,12 @@ export default function Auth() {
           </Card>
 
           {/* Footer Links */}
-          <div className="text-center mt-6 text-sm text-gray-600">
+          <div className="text-center mt-6 text-sm text-gray-600 dark:text-gray-400">
             <p>
               Need help?{" "}
               <Link
-                to="/#contact"
-                className="text-blue-600 hover:text-blue-500"
+                to="/contact"
+                className="text-blue-600 dark:text-blue-400 hover:text-blue-500"
               >
                 Contact Support
               </Link>

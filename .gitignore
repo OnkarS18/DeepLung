@@ -1,21 +1,47 @@
-# Node.js
-**/node_modules/
-**/dist/
+# Logs
+logs
 *.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
 
-# Environment variables
+# Dependencies
+node_modules
+dist
+dist-ssr
+*.local
+
+# Editor
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Environment
 .env
 .env.*
 
-# IDEs
-.vscode/
-.idea/
-
-# OS files
-.DS_Store
-Thumbs.db
-
-# Project specific
+# Python / Extraction
 /temp_ts_compile/
-/src/
 *.tmp
+download_src.py
+
+# Python Virtual Environments
+.venv/
+venv/
+ENV/
+
+# Large Datasets (Not required for prediction API)
+**/dataset/
+
+# User test files in root
+/IMG_2370.HEIC
+/WhatsApp Image 2026-04-24 at 6.14.57 PM.jpeg
+

@@ -20,6 +20,7 @@ export default function ThemeToggle() {
 
   const toggleTheme = () => {
     const newTheme = !isDark;
+    console.log("Button clicked. New theme state will be:", newTheme ? "dark" : "light");
     setIsDark(newTheme);
     if (newTheme) {
       document.documentElement.classList.add("dark");
@@ -28,6 +29,7 @@ export default function ThemeToggle() {
       document.documentElement.classList.remove("dark");
       localStorage.setItem("theme", "light");
     }
+    console.log("Current HTML classes:", document.documentElement.className);
   };
 
   return (

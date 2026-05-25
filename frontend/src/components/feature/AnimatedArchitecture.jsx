@@ -100,10 +100,10 @@ export default function AnimatedArchitecture() {
     <div className="space-y-6">
       <Card className="p-6">
         <div className="text-center mb-8">
-          <h2 className="text-3xl font-bold text-gray-800 mb-4">
+          <h2 className="text-3xl font-bold text-gray-800 dark:text-white mb-4">
             System Architecture Flow
           </h2>
-          <p className="text-gray-600 max-w-2xl mx-auto mb-6">
+          <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto mb-6">
             Watch how DeepLung processes CT scans through our advanced AI
             pipeline, from input to diagnostic report generation.
           </p>
@@ -122,7 +122,7 @@ export default function AnimatedArchitecture() {
         </div>
 
         {/* Animated Flow Diagram */}
-        <div className="relative h-96 bg-gradient-to-br from-blue-50 to-green-50 rounded-xl p-8 overflow-hidden">
+        <div className="relative h-96 bg-gradient-to-br from-blue-50 to-green-50 dark:from-blue-900/40 dark:to-green-900/40 rounded-xl p-8 overflow-hidden transition-colors duration-500">
           <svg
             className="absolute inset-0 w-full h-full"
             viewBox="0 0 100 100"
@@ -187,10 +187,10 @@ export default function AnimatedArchitecture() {
               <div
                 className={`w-20 h-20 rounded-full flex flex-col items-center justify-center text-center p-2 transition-all duration-500 cursor-pointer ${
                   activeStep === step.id
-                    ? "bg-blue-600 text-white shadow-xl ring-4 ring-blue-200"
+                    ? "bg-blue-600 text-white shadow-xl ring-4 ring-blue-200 dark:ring-blue-800"
                     : flowActive
-                      ? "bg-white text-gray-700 shadow-lg border-2 border-blue-200"
-                      : "bg-white text-gray-600 shadow-md border border-gray-200 hover:shadow-lg"
+                      ? "bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-200 shadow-lg border-2 border-blue-200 dark:border-blue-800"
+                      : "bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-300 shadow-md border border-gray-200 dark:border-gray-700 hover:shadow-lg"
                 }`}
                 onClick={() =>
                   setActiveStep(activeStep === step.id ? null : step.id)
@@ -242,7 +242,7 @@ export default function AnimatedArchitecture() {
             key={step.id}
             className={`p-6 transition-all duration-300 cursor-pointer ${
               activeStep === step.id
-                ? "ring-2 ring-blue-500 bg-blue-50"
+                ? "ring-2 ring-blue-500 bg-blue-50 dark:bg-blue-900/40"
                 : "hover:shadow-lg"
             }`}
             onClick={() =>
@@ -254,7 +254,7 @@ export default function AnimatedArchitecture() {
                 className={`w-12 h-12 rounded-full flex items-center justify-center ${
                   activeStep === step.id
                     ? "bg-blue-600 text-white"
-                    : "bg-gray-100 text-gray-600"
+                    : "bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400"
                 }`}
               >
                 <i className={`${step.icon} text-xl`}></i>
@@ -265,14 +265,14 @@ export default function AnimatedArchitecture() {
                     className={`w-6 h-6 rounded-full text-xs font-bold flex items-center justify-center ${
                       activeStep === step.id
                         ? "bg-blue-600 text-white"
-                        : "bg-gray-200 text-gray-600"
+                        : "bg-gray-200 dark:bg-gray-700 text-gray-600 dark:text-gray-400"
                     }`}
                   >
                     {index + 1}
                   </span>
-                  <h4 className="font-semibold text-gray-800">{step.title}</h4>
+                  <h4 className="font-semibold text-gray-800 dark:text-white">{step.title}</h4>
                 </div>
-                <p className="text-gray-600 text-sm leading-relaxed">
+                <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
                   {step.description}
                 </p>
               </div>
@@ -283,40 +283,40 @@ export default function AnimatedArchitecture() {
 
       {/* Performance Metrics */}
       <Card className="p-6">
-        <h3 className="text-xl font-bold text-gray-800 mb-6 text-center">
+        <h3 className="text-xl font-bold text-gray-800 dark:text-white mb-6 text-center">
           Processing Performance
         </h3>
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
           <div className="text-center">
-            <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-              <i className="ri-time-line text-blue-600 text-2xl"></i>
+            <div className="w-16 h-16 bg-blue-100 dark:bg-blue-900/40 rounded-full flex items-center justify-center mx-auto mb-4">
+              <i className="ri-time-line text-blue-600 dark:text-blue-400 text-2xl"></i>
             </div>
-            <div className="text-2xl font-bold text-gray-800 mb-1">&lt;60s</div>
-            <div className="text-sm text-gray-600">Processing Time</div>
+            <div className="text-2xl font-bold text-gray-800 dark:text-white mb-1">&lt;60s</div>
+            <div className="text-sm text-gray-600 dark:text-gray-400">Processing Time</div>
           </div>
 
           <div className="text-center">
-            <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-              <i className="ri-cpu-line text-green-600 text-2xl"></i>
+            <div className="w-16 h-16 bg-green-100 dark:bg-green-900/40 rounded-full flex items-center justify-center mx-auto mb-4">
+              <i className="ri-cpu-line text-green-600 dark:text-green-400 text-2xl"></i>
             </div>
-            <div className="text-2xl font-bold text-gray-800 mb-1">95.7%</div>
-            <div className="text-sm text-gray-600">Accuracy</div>
+            <div className="text-2xl font-bold text-gray-800 dark:text-white mb-1">95.7%</div>
+            <div className="text-sm text-gray-600 dark:text-gray-400">Accuracy</div>
           </div>
 
           <div className="text-center">
-            <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
-              <i className="ri-cloud-line text-purple-600 text-2xl"></i>
+            <div className="w-16 h-16 bg-purple-100 dark:bg-purple-900/40 rounded-full flex items-center justify-center mx-auto mb-4">
+              <i className="ri-cloud-line text-purple-600 dark:text-purple-400 text-2xl"></i>
             </div>
-            <div className="text-2xl font-bold text-gray-800 mb-1">Cloud</div>
-            <div className="text-sm text-gray-600">Scalable Infrastructure</div>
+            <div className="text-2xl font-bold text-gray-800 dark:text-white mb-1">Cloud</div>
+            <div className="text-sm text-gray-600 dark:text-gray-400">Scalable Infrastructure</div>
           </div>
 
           <div className="text-center">
-            <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
-              <i className="ri-shield-check-line text-orange-600 text-2xl"></i>
+            <div className="w-16 h-16 bg-orange-100 dark:bg-orange-900/40 rounded-full flex items-center justify-center mx-auto mb-4">
+              <i className="ri-shield-check-line text-orange-600 dark:text-orange-400 text-2xl"></i>
             </div>
-            <div className="text-2xl font-bold text-gray-800 mb-1">HIPAA</div>
-            <div className="text-sm text-gray-600">Compliant</div>
+            <div className="text-2xl font-bold text-gray-800 dark:text-white mb-1">HIPAA</div>
+            <div className="text-sm text-gray-600 dark:text-gray-400">Compliant</div>
           </div>
         </div>
       </Card>

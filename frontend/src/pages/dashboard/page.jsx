@@ -33,13 +33,13 @@ export default function Dashboard() {
             <CTScanViewer />
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
               <div>
-                <h3 className="text-xl font-bold text-gray-800 mb-4">
+                <h3 className="text-xl font-bold text-gray-800 dark:text-white mb-4">
                   AI Assistant
                 </h3>
                 <GradCAMChatbot />
               </div>
               <div>
-                <h3 className="text-xl font-bold text-gray-800 mb-4">
+                <h3 className="text-xl font-bold text-gray-800 dark:text-white mb-4">
                   Quick Actions
                 </h3>
                 <Card className="p-6">
@@ -76,16 +76,16 @@ export default function Dashboard() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
       <Header />
 
       <main className="container mx-auto px-6 py-8">
         {/* Dashboard Header */}
         <div className="text-center mb-8">
-          <h1 className="text-4xl font-bold text-gray-800 mb-4">
+          <h1 className="text-4xl font-bold text-gray-800 dark:text-white mb-4">
             DeepLung AI Dashboard
           </h1>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
             Advanced AI-powered tools for lung cancer detection, analysis, and
             clinical decision support.
           </p>
@@ -99,8 +99,8 @@ export default function Dashboard() {
               onClick={() => setActiveTab(tab.key)}
               className={`flex items-center space-x-2 px-6 py-3 rounded-lg font-medium transition-all whitespace-nowrap cursor-pointer ${
                 activeTab === tab.key
-                  ? "bg-blue-600 text-white shadow-lg"
-                  : "bg-white text-gray-700 hover:bg-gray-50 border border-gray-200"
+                  ? "bg-blue-600 dark:bg-blue-500 text-white shadow-lg"
+                  : "bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 border border-gray-200 dark:border-gray-700"
               }`}
             >
               <i className={tab.icon}></i>

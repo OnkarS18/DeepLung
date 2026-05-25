@@ -1,11 +1,12 @@
+import { useNavigate } from "react-router-dom";
 import Button from "../../../components/base/Button";
 
 export default function HeroSection() {
-  const scrollToSection = (sectionId) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
+  const navigate = useNavigate();
+
+  const handleNavigate = (path) => {
+    navigate(path);
+    window.scrollTo(0, 0);
   };
 
   return (
@@ -46,7 +47,7 @@ export default function HeroSection() {
             </h2>
 
             {/* XAI Tagline */}
-            <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 mb-8 border border-white/20 hover-lift">
+            <div className="bg-white/10 dark:bg-black/20 backdrop-blur-sm rounded-xl p-6 mb-8 border border-white/20 hover-lift">
               <div className="flex items-center space-x-4">
                 <div className="w-12 h-12 bg-gradient-to-r from-yellow-400 via-orange-500 to-pink-500 rounded-xl flex items-center justify-center shadow-lg">
                   <i className="ri-brain-line text-white text-2xl"></i>
@@ -56,7 +57,7 @@ export default function HeroSection() {
                     <span>Explainable AI Implementation</span>
                     <i className="ri-sparkling-2-line text-yellow-400"></i>
                   </h3>
-                  <p className="text-blue-100 text-lg">
+                  <p className="text-blue-100 dark:text-blue-200 text-lg">
                     Transparent, interpretable decisions you can trust
                   </p>
                 </div>
@@ -74,7 +75,7 @@ export default function HeroSection() {
               <Button
                 variant="outline"
                 size="lg"
-                onClick={() => scrollToSection("about")}
+                onClick={() => handleNavigate("/about")}
                 className="bg-white text-blue-900 border-white hover:bg-blue-50 btn-glow hover-lift whitespace-nowrap shadow-xl"
               >
                 <i className="ri-play-circle-line"></i>
@@ -83,7 +84,7 @@ export default function HeroSection() {
               <Button
                 variant="outline"
                 size="lg"
-                onClick={() => scrollToSection("architecture")}
+                onClick={() => handleNavigate("/architecture")}
                 className="border-white text-white hover:bg-white hover:text-blue-800 hover-lift whitespace-nowrap"
               >
                 <i className="ri-settings-3-line"></i>
@@ -92,7 +93,7 @@ export default function HeroSection() {
               <Button
                 variant="outline"
                 size="lg"
-                onClick={() => (window.location.href = "/auth")}
+                onClick={() => handleNavigate("/dashboard")}
                 className="border-yellow-400 text-yellow-400 hover:bg-yellow-400 hover:text-blue-800 hover-lift xai-glow whitespace-nowrap"
               >
                 <i className="ri-login-box-line"></i>
@@ -101,7 +102,7 @@ export default function HeroSection() {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-16">
-              <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20 hover-lift">
+              <div className="bg-white/10 dark:bg-black/20 backdrop-blur-sm rounded-xl p-6 border border-white/20 hover-lift">
                 <div className="w-12 h-12 bg-gradient-to-r from-green-500 to-emerald-600 rounded-lg flex items-center justify-center mb-4 shadow-lg">
                   <i className="ri-brain-line text-white text-xl"></i>
                 </div>
@@ -114,7 +115,7 @@ export default function HeroSection() {
                 </p>
               </div>
 
-              <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20 hover-lift">
+              <div className="bg-white/10 dark:bg-black/20 backdrop-blur-sm rounded-xl p-6 border border-white/20 hover-lift">
                 <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-lg flex items-center justify-center mb-4 shadow-lg">
                   <i className="ri-eye-line text-white text-xl"></i>
                 </div>
@@ -127,7 +128,7 @@ export default function HeroSection() {
                 </p>
               </div>
 
-              <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20 hover-lift">
+              <div className="bg-white/10 dark:bg-black/20 backdrop-blur-sm rounded-xl p-6 border border-white/20 hover-lift">
                 <div className="w-12 h-12 bg-gradient-to-r from-purple-500 to-pink-600 rounded-lg flex items-center justify-center mb-4 shadow-lg">
                   <i className="ri-shield-check-line text-white text-xl"></i>
                 </div>
@@ -156,7 +157,7 @@ export default function HeroSection() {
 
       <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
         <button
-          onClick={() => scrollToSection("about")}
+          onClick={() => handleNavigate("/about")}
           className="w-12 h-12 rounded-full border-2 border-white/50 flex items-center justify-center text-white hover:bg-white/20 cursor-pointer transition-all hover-lift"
         >
           <i className="ri-arrow-down-line text-xl"></i>

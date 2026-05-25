@@ -143,10 +143,10 @@ export default function FAQSection() {
     <div className="space-y-6">
       <Card className="p-6">
         <div className="text-center mb-8">
-          <h2 className="text-3xl font-bold text-gray-800 mb-4">
+          <h2 className="text-3xl font-bold text-gray-800 dark:text-white mb-4">
             Frequently Asked Questions
           </h2>
-          <p className="text-gray-600 max-w-2xl mx-auto">
+          <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
             Find answers to common questions about DeepLung, our AI-driven lung
             cancer detection system.
           </p>
@@ -160,7 +160,7 @@ export default function FAQSection() {
             placeholder="Search questions and answers..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            className="w-full pl-10 pr-4 py-3 border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
           />
         </div>
 
@@ -173,7 +173,7 @@ export default function FAQSection() {
               className={`flex items-center space-x-2 px-4 py-2 rounded-lg font-medium transition-all whitespace-nowrap cursor-pointer ${
                 selectedCategory === category.key
                   ? "bg-blue-600 text-white"
-                  : "bg-gray-100 text-gray-700 hover:bg-gray-200"
+                  : "bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 border border-transparent dark:border-gray-700"
               }`}
             >
               <i className={category.icon}></i>
@@ -183,7 +183,7 @@ export default function FAQSection() {
         </div>
 
         {/* Results Count */}
-        <div className="text-sm text-gray-600 mb-6">
+        <div className="text-sm text-gray-600 dark:text-gray-400 mb-6">
           Showing {filteredFAQs.length} of {faqData.length} questions
           {searchTerm && ` for "${searchTerm}"`}
         </div>
@@ -195,21 +195,21 @@ export default function FAQSection() {
           <Card key={faq.id} className="overflow-hidden">
             <button
               onClick={() => toggleFAQ(faq.id)}
-              className="w-full px-6 py-4 text-left flex items-center justify-between hover:bg-gray-50 transition-colors cursor-pointer"
+              className="w-full px-6 py-4 text-left flex items-center justify-between hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors cursor-pointer"
             >
               <div className="flex-1 pr-4">
-                <h3 className="text-lg font-semibold text-gray-800 mb-1">
+                <h3 className="text-lg font-semibold text-gray-800 dark:text-white mb-1">
                   {faq.question}
                 </h3>
                 <span
                   className={`text-xs font-medium px-2 py-1 rounded-full ${
                     faq.category === "general"
-                      ? "bg-blue-100 text-blue-800"
+                      ? "bg-blue-100 dark:bg-blue-900/40 text-blue-800 dark:text-blue-300"
                       : faq.category === "technical"
-                        ? "bg-purple-100 text-purple-800"
+                        ? "bg-purple-100 dark:bg-purple-900/40 text-purple-800 dark:text-purple-300"
                         : faq.category === "medical"
-                          ? "bg-green-100 text-green-800"
-                          : "bg-orange-100 text-orange-800"
+                          ? "bg-green-100 dark:bg-green-900/40 text-green-800 dark:text-green-300"
+                          : "bg-orange-100 dark:bg-orange-900/40 text-orange-800 dark:text-orange-300"
                   }`}
                 >
                   {faq.category.toUpperCase()}
@@ -222,9 +222,9 @@ export default function FAQSection() {
 
             {openFAQ === faq.id && (
               <div className="px-6 pb-6">
-                <div className="border-t pt-4">
+                <div className="border-t dark:border-gray-700 pt-4">
                   <p
-                    className="text-gray-600 leading-relaxed"
+                    className="text-gray-600 dark:text-gray-300 leading-relaxed"
                     dangerouslySetInnerHTML={{ __html: faq.answer }}
                   ></p>
                 </div>
@@ -237,25 +237,25 @@ export default function FAQSection() {
       {filteredFAQs.length === 0 && (
         <Card className="p-12 text-center">
           <i className="ri-question-line text-4xl text-gray-400 mb-4 block"></i>
-          <h3 className="text-xl font-semibold text-gray-700 mb-2">
+          <h3 className="text-xl font-semibold text-gray-700 dark:text-gray-300 mb-2">
             No questions found
           </h3>
-          <p className="text-gray-500">
+          <p className="text-gray-500 dark:text-gray-400">
             Try adjusting your search terms or selecting a different category.
           </p>
         </Card>
       )}
 
       {/* Contact Support */}
-      <Card className="p-6 bg-blue-50 border-blue-200">
+      <Card className="p-6 bg-blue-50 dark:bg-blue-900/20 border-blue-200 dark:border-blue-800">
         <div className="text-center">
-          <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-            <i className="ri-customer-service-2-line text-blue-600 text-2xl"></i>
+          <div className="w-16 h-16 bg-blue-100 dark:bg-blue-900/40 rounded-full flex items-center justify-center mx-auto mb-4">
+            <i className="ri-customer-service-2-line text-blue-600 dark:text-blue-400 text-2xl"></i>
           </div>
-          <h3 className="text-xl font-bold text-gray-800 mb-2">
+          <h3 className="text-xl font-bold text-gray-800 dark:text-white mb-2">
             Still have questions?
           </h3>
-          <p className="text-gray-600 mb-4">
+          <p className="text-gray-600 dark:text-gray-400 mb-4">
             Our team is here to help. Contact us for more information about
             DeepLung.
           </p>

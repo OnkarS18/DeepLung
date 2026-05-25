@@ -95,13 +95,13 @@ export default function FeaturesSection() {
   };
 
   return (
-    <section id="features" className="py-20 bg-white">
+    <section id="features" className="py-20 bg-white dark:bg-gray-900 transition-colors duration-300">
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-800 mb-6">
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-800 dark:text-white mb-6">
             Key Features
           </h2>
-          <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
+          <p className="text-xl text-gray-600 dark:text-gray-400 max-w-4xl mx-auto leading-relaxed">
             Comprehensive AI-driven features designed to revolutionize lung
             cancer detection and support healthcare professionals in making
             accurate, timely diagnoses.
@@ -122,20 +122,20 @@ export default function FeaturesSection() {
                 >
                   <i className={`${feature.icon} text-white text-2xl`}></i>
                 </div>
-                <h4 className="text-xl font-semibold text-gray-800 mb-3">
+                <h4 className="text-xl font-semibold text-gray-800 dark:text-white mb-3">
                   {feature.title}
                 </h4>
-                <p className="text-gray-600 mb-4 leading-relaxed">
+                <p className="text-gray-600 dark:text-gray-400 mb-4 leading-relaxed">
                   {feature.description}
                 </p>
                 <ul className="space-y-2">
                   {feature.details.map((detail, detailIndex) => (
                     <li
                       key={detailIndex}
-                      className="flex items-start space-x-2 text-sm text-gray-500"
+                      className="flex items-start space-x-2 text-sm text-gray-500 dark:text-gray-400"
                     >
                       <div
-                        className={`w-1.5 h-1.5 ${iconBg.replace("bg-", "bg-").replace("-100", "-500")} rounded-full mt-2 flex-shrink-0`}
+                        className={`w-1.5 h-1.5 ${feature.color === 'blue' ? 'bg-blue-500' : feature.color === 'green' ? 'bg-green-500' : feature.color === 'purple' ? 'bg-purple-500' : feature.color === 'orange' ? 'bg-orange-500' : feature.color === 'red' ? 'bg-red-500' : 'bg-teal-500'} rounded-full mt-2 flex-shrink-0`}
                       ></div>
                       <span>{detail}</span>
                     </li>
@@ -148,18 +148,18 @@ export default function FeaturesSection() {
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           <Card className="p-8">
-            <h3 className="text-2xl font-bold text-gray-800 mb-6">
+            <h3 className="text-2xl font-bold text-gray-800 dark:text-white mb-6">
               Performance Metrics
             </h3>
             <div className="space-y-6">
               <div>
                 <div className="flex justify-between items-center mb-2">
-                  <span className="text-gray-600 font-medium">
+                  <span className="text-gray-600 dark:text-gray-400 font-medium">
                     Detection Accuracy
                   </span>
-                  <span className="text-blue-600 font-bold">95.7%</span>
+                  <span className="text-blue-600 dark:text-blue-400 font-bold">95.7%</span>
                 </div>
-                <div className="w-full bg-gray-200 rounded-full h-3">
+                <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-3">
                   <div
                     className="bg-gradient-to-r from-blue-500 to-blue-600 h-3 rounded-full"
                     style={{ width: "95.7%" }}
@@ -169,12 +169,12 @@ export default function FeaturesSection() {
 
               <div>
                 <div className="flex justify-between items-center mb-2">
-                  <span className="text-gray-600 font-medium">
+                  <span className="text-gray-600 dark:text-gray-400 font-medium">
                     Classification Precision
                   </span>
-                  <span className="text-green-600 font-bold">92.3%</span>
+                  <span className="text-green-600 dark:text-green-400 font-bold">92.3%</span>
                 </div>
-                <div className="w-full bg-gray-200 rounded-full h-3">
+                <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-3">
                   <div
                     className="bg-gradient-to-r from-green-500 to-green-600 h-3 rounded-full"
                     style={{ width: "92.3%" }}
@@ -184,12 +184,12 @@ export default function FeaturesSection() {
 
               <div>
                 <div className="flex justify-between items-center mb-2">
-                  <span className="text-gray-600 font-medium">
+                  <span className="text-gray-600 dark:text-gray-400 font-medium">
                     Processing Speed
                   </span>
-                  <span className="text-purple-600 font-bold">98.1%</span>
+                  <span className="text-purple-600 dark:text-purple-400 font-bold">98.1%</span>
                 </div>
-                <div className="w-full bg-gray-200 rounded-full h-3">
+                <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-3">
                   <div
                     className="bg-gradient-to-r from-purple-500 to-purple-600 h-3 rounded-full"
                     style={{ width: "98.1%" }}
@@ -199,12 +199,12 @@ export default function FeaturesSection() {
 
               <div>
                 <div className="flex justify-between items-center mb-2">
-                  <span className="text-gray-600 font-medium">
+                  <span className="text-gray-600 dark:text-gray-400 font-medium">
                     System Reliability
                   </span>
-                  <span className="text-orange-600 font-bold">99.2%</span>
+                  <span className="text-orange-600 dark:text-orange-400 font-bold">99.2%</span>
                 </div>
-                <div className="w-full bg-gray-200 rounded-full h-3">
+                <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-3">
                   <div
                     className="bg-gradient-to-r from-orange-500 to-orange-600 h-3 rounded-full"
                     style={{ width: "99.2%" }}
@@ -215,61 +215,61 @@ export default function FeaturesSection() {
           </Card>
 
           <Card className="p-8">
-            <h3 className="text-2xl font-bold text-gray-800 mb-6">
+            <h3 className="text-2xl font-bold text-gray-800 dark:text-white mb-6">
               Technical Achievements
             </h3>
             <div className="space-y-4">
               <div className="flex items-center space-x-4">
-                <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
-                  <i className="ri-cpu-line text-blue-600 text-xl"></i>
+                <div className="w-12 h-12 bg-blue-100 dark:bg-blue-900/40 rounded-full flex items-center justify-center">
+                  <i className="ri-cpu-line text-blue-600 dark:text-blue-400 text-xl"></i>
                 </div>
                 <div>
-                  <h4 className="font-semibold text-gray-800">
+                  <h4 className="font-semibold text-gray-800 dark:text-white">
                     Multi-Model Ensemble
                   </h4>
-                  <p className="text-gray-600 text-sm">
+                  <p className="text-gray-600 dark:text-gray-400 text-sm">
                     Advanced ensemble of 5+ deep learning models
                   </p>
                 </div>
               </div>
 
               <div className="flex items-center space-x-4">
-                <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center">
-                  <i className="ri-cloud-line text-green-600 text-xl"></i>
+                <div className="w-12 h-12 bg-green-100 dark:bg-green-900/40 rounded-full flex items-center justify-center">
+                  <i className="ri-cloud-line text-green-600 dark:text-green-400 text-xl"></i>
                 </div>
                 <div>
-                  <h4 className="font-semibold text-gray-800">
+                  <h4 className="font-semibold text-gray-800 dark:text-white">
                     Cloud Integration
                   </h4>
-                  <p className="text-gray-600 text-sm">
+                  <p className="text-gray-600 dark:text-gray-400 text-sm">
                     Scalable cloud-based processing infrastructure
                   </p>
                 </div>
               </div>
 
               <div className="flex items-center space-x-4">
-                <div className="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center">
-                  <i className="ri-smartphone-line text-purple-600 text-xl"></i>
+                <div className="w-12 h-12 bg-purple-100 dark:bg-purple-900/40 rounded-full flex items-center justify-center">
+                  <i className="ri-smartphone-line text-purple-600 dark:text-purple-400 text-xl"></i>
                 </div>
                 <div>
-                  <h4 className="font-semibold text-gray-800">
+                  <h4 className="font-semibold text-gray-800 dark:text-white">
                     Mobile Compatibility
                   </h4>
-                  <p className="text-gray-600 text-sm">
+                  <p className="text-gray-600 dark:text-gray-400 text-sm">
                     Responsive design for mobile device access
                   </p>
                 </div>
               </div>
 
               <div className="flex items-center space-x-4">
-                <div className="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center">
-                  <i className="ri-api-line text-orange-600 text-xl"></i>
+                <div className="w-12 h-12 bg-orange-100 dark:bg-orange-900/40 rounded-full flex items-center justify-center">
+                  <i className="ri-api-line text-orange-600 dark:text-orange-400 text-xl"></i>
                 </div>
                 <div>
-                  <h4 className="font-semibold text-gray-800">
+                  <h4 className="font-semibold text-gray-800 dark:text-white">
                     API Integration
                   </h4>
-                  <p className="text-gray-600 text-sm">
+                  <p className="text-gray-600 dark:text-gray-400 text-sm">
                     RESTful APIs for seamless system integration
                   </p>
                 </div>

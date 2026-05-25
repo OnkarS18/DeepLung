@@ -85,13 +85,13 @@ export default function ContactSection() {
   ];
 
   return (
-    <section id="contact" className="py-20 bg-white">
+    <section id="contact" className="py-20 bg-white dark:bg-gray-900 transition-colors duration-300">
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-800 mb-6">
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-800 dark:text-white mb-6">
             Contact Us
           </h2>
-          <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
+          <p className="text-xl text-gray-600 dark:text-gray-400 max-w-4xl mx-auto leading-relaxed">
             Get in touch with our team for collaboration opportunities,
             technical discussions, or academic inquiries about the DeepLung
             project.
@@ -102,10 +102,10 @@ export default function ContactSection() {
           {/* Contact Information */}
           <div>
             <Card className="p-8 mb-8">
-              <h3 className="text-2xl font-bold text-gray-800 mb-6">
+              <h3 className="text-2xl font-bold text-gray-800 dark:text-white mb-6">
                 Get In Touch
               </h3>
-              <p className="text-gray-600 leading-relaxed mb-8">
+              <p className="text-gray-600 dark:text-gray-300 leading-relaxed mb-8">
                 We welcome collaboration opportunities, technical discussions,
                 and academic inquiries. Whether you're a healthcare
                 professional, researcher, or fellow student, we'd love to hear
@@ -116,17 +116,17 @@ export default function ContactSection() {
               <div className="space-y-6">
                 {contactInfo.map((info, index) => (
                   <div key={index} className="flex items-start space-x-4">
-                    <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                      <i className={`${info.icon} text-blue-600 text-xl`}></i>
+                    <div className="w-12 h-12 bg-blue-100 dark:bg-blue-900/30 rounded-lg flex items-center justify-center flex-shrink-0">
+                      <i className={`${info.icon} text-blue-600 dark:text-blue-400 text-xl`}></i>
                     </div>
                     <div>
-                      <h4 className="font-semibold text-gray-800 mb-1">
+                      <h4 className="font-semibold text-gray-800 dark:text-white mb-1">
                         {info.title}
                       </h4>
-                      <p className="text-blue-600 font-medium mb-1">
+                      <p className="text-blue-600 dark:text-blue-400 font-medium mb-1">
                         {info.value}
                       </p>
-                      <p className="text-gray-500 text-sm">
+                      <p className="text-gray-500 dark:text-gray-400 text-sm">
                         {info.description}
                       </p>
                     </div>
@@ -137,7 +137,7 @@ export default function ContactSection() {
 
             {/* Project Statistics */}
             <Card className="p-8">
-              <h3 className="text-xl font-bold text-gray-800 mb-6">
+              <h3 className="text-xl font-bold text-gray-800 dark:text-white mb-6">
                 Project Impact
               </h3>
               <div className="grid grid-cols-2 gap-6">
@@ -145,7 +145,7 @@ export default function ContactSection() {
                   <div className="text-3xl font-bold text-blue-600 mb-2">
                     95.7%
                   </div>
-                  <div className="text-gray-600 text-sm">
+                  <div className="text-gray-600 dark:text-gray-400 text-sm">
                     Detection Accuracy
                   </div>
                 </div>
@@ -174,7 +174,7 @@ export default function ContactSection() {
           {/* Contact Form */}
           <div>
             <Card className="p-8">
-              <h3 className="text-2xl font-bold text-gray-800 mb-6">
+              <h3 className="text-2xl font-bold text-gray-800 dark:text-white mb-6">
                 Send a Message
               </h3>
 
@@ -195,7 +195,7 @@ export default function ContactSection() {
                   <div>
                     <label
                       htmlFor="name"
-                      className="block text-sm font-medium text-gray-700 mb-2"
+                      className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
                     >
                       Full Name *
                     </label>
@@ -206,7 +206,7 @@ export default function ContactSection() {
                       required
                       value={formData.name}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm"
+                      className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm"
                       placeholder="Enter your full name"
                     />
                   </div>
@@ -225,7 +225,7 @@ export default function ContactSection() {
                       required
                       value={formData.email}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm"
+                      className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm"
                       placeholder="Enter your email address"
                     />
                   </div>
@@ -244,7 +244,7 @@ export default function ContactSection() {
                     name="organization"
                     value={formData.organization}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm"
+                    className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm"
                     placeholder="Enter your organization or institution"
                   />
                 </div>
@@ -262,7 +262,7 @@ export default function ContactSection() {
                     required
                     value={formData.subject}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-3 pr-8 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm"
+                    className="w-full px-4 py-3 pr-8 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm outline-none"
                   >
                     <option value="">Select a subject</option>
                     <option value="collaboration">
@@ -277,12 +277,12 @@ export default function ContactSection() {
                 </div>
 
                 <div className="mb-6">
-                  <label
-                    htmlFor="message"
-                    className="block text-sm font-medium text-gray-700 mb-2"
-                  >
-                    Message *
-                  </label>
+                    <label
+                      htmlFor="message"
+                      className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
+                    >
+                      Message *
+                    </label>
                   <textarea
                     id="message"
                     name="message"
@@ -291,7 +291,7 @@ export default function ContactSection() {
                     maxLength={500}
                     value={formData.message}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm resize-none"
+                    className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm resize-none outline-none"
                     placeholder="Enter your message (max 500 characters)"
                   ></textarea>
                   <div className="text-right text-sm text-gray-500 mt-1">

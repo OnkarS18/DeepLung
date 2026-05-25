@@ -69,13 +69,13 @@ export default function MethodologySection() {
   ];
 
   return (
-    <section id="methodology" className="py-20 bg-gray-50">
+    <section id="methodology" className="py-20 bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-800 mb-6">
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-800 dark:text-white mb-6">
             Methodology & Process Flow
           </h2>
-          <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
+          <p className="text-xl text-gray-600 dark:text-gray-400 max-w-4xl mx-auto leading-relaxed">
             A systematic approach to developing an AI-driven lung cancer
             detection system through rigorous research, development, and
             validation phases.
@@ -84,16 +84,16 @@ export default function MethodologySection() {
 
         <div className="mb-16">
           <Card className="p-8">
-            <h3 className="text-2xl font-bold text-gray-800 mb-6 text-center">
+            <h3 className="text-2xl font-bold text-gray-800 dark:text-white mb-6 text-center">
               Project Timeline & Gantt Chart
             </h3>
             <div
-              className="w-full h-80 bg-cover bg-center rounded-xl mb-6"
+              className={`w-full h-80 bg-cover bg-center rounded-xl mb-6 shadow-md`}
               style={{
                 backgroundImage: `url('https://readdy.ai/api/search-image?query=Professional%20Gantt%20chart%20showing%2022-week%20project%20timeline%20for%20AI%20medical%20system%20development%2C%20clean%20project%20management%20visualization%2C%20timeline%20bars%20in%20blue%20and%20green%20colors%2C%20milestones%20marked%20clearly%2C%20modern%20business%20chart%20design%2C%20professional%20documentation%20style&width=1200&height=500&seq=gantt-chart&orientation=landscape')`,
               }}
             ></div>
-            <p className="text-gray-600 text-center leading-relaxed">
+            <p className="text-gray-600 dark:text-gray-400 text-center leading-relaxed">
               The project follows a structured 22-week timeline with clearly
               defined phases, milestones, and deliverables to ensure systematic
               development and thorough validation.
@@ -115,18 +115,18 @@ export default function MethodologySection() {
               <Card className="flex-1 p-6 hover" hover>
                 <div className="flex items-start justify-between mb-4">
                   <div className="flex items-center space-x-3">
-                    <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
-                      <i className={`${step.icon} text-blue-600 text-xl`}></i>
+                    <div className="w-10 h-10 bg-blue-100 dark:bg-blue-900/30 rounded-lg flex items-center justify-center">
+                      <i className={`${step.icon} text-blue-600 dark:text-blue-400 text-xl`}></i>
                     </div>
-                    <h4 className="text-xl font-semibold text-gray-800">
+                    <h4 className="text-xl font-semibold text-gray-800 dark:text-white">
                       {step.title}
                     </h4>
                   </div>
-                  <span className="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium">
+                  <span className="bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-300 px-3 py-1 rounded-full text-sm font-medium">
                     {step.duration}
                   </span>
                 </div>
-                <p className="text-gray-600 leading-relaxed">
+                <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
                   {step.description}
                 </p>
               </Card>
@@ -136,10 +136,10 @@ export default function MethodologySection() {
 
         <div className="mt-16 grid grid-cols-1 md:grid-cols-2 gap-8">
           <Card className="p-8">
-            <h3 className="text-2xl font-bold text-gray-800 mb-6">
+            <h3 className="text-2xl font-bold text-gray-800 dark:text-white mb-6">
               Research Methodology
             </h3>
-            <ul className="space-y-4 text-gray-600">
+            <ul className="space-y-4 text-gray-600 dark:text-gray-400">
               <li className="flex items-start space-x-3">
                 <i className="ri-checkbox-circle-line text-green-500 mt-1"></i>
                 <span>
@@ -166,10 +166,10 @@ export default function MethodologySection() {
           </Card>
 
           <Card className="p-8">
-            <h3 className="text-2xl font-bold text-gray-800 mb-6">
+            <h3 className="text-2xl font-bold text-gray-800 dark:text-white mb-6">
               Quality Assurance
             </h3>
-            <ul className="space-y-4 text-gray-600">
+            <ul className="space-y-4 text-gray-600 dark:text-gray-400">
               <li className="flex items-start space-x-3">
                 <i className="ri-shield-check-line text-blue-500 mt-1"></i>
                 <span>Cross-validation techniques for model reliability</span>
