@@ -1,6 +1,15 @@
 import os
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
+os.environ['OMP_NUM_THREADS'] = '1'
+os.environ['MKL_NUM_THREADS'] = '1'
+
 import numpy as np
 import tensorflow as tf
+
+# Limit TensorFlow to 1 thread to optimize memory/CPU usage on Render free tier
+tf.config.threading.set_intra_op_parallelism_threads(1)
+tf.config.threading.set_inter_op_parallelism_threads(1)
+
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 from tensorflow.keras.preprocessing import image
@@ -52,7 +61,14 @@ def get_model():
 
 print("Loading model...")
 model = get_model()
-print("Model loaded successfully.")
+print("Model loaded successfully. Warming up model...")
+# Warmup prediction to compile the graph during boot
+try:
+    warmup_data = np.zeros((1, IMAGE_SIZE[0], IMAGE_SIZE[1], 3))
+    model.predict(warmup_data, verbose=0)
+    print("Model warmed up and ready.")
+except Exception as e:
+    print(f"Model warmup failed: {e}")
 
 @app.route('/predict', methods=['POST'])
 def predict():
