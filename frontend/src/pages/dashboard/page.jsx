@@ -1,7 +1,6 @@
 import { useState } from "react";
 import Header from "../../components/feature/Header";
 import Footer from "../../components/feature/Footer";
-import XAISanvadChatbot from "../../components/feature/XAISanvadChatbot";
 import CTScanViewer from "../../components/feature/CTScanViewer";
 import GradCAMChatbot from "../../components/feature/GradCAMChatbot";
 import ModelComparison from "../../components/feature/ModelComparison";
@@ -97,11 +96,10 @@ export default function Dashboard() {
             <button
               key={tab.key}
               onClick={() => setActiveTab(tab.key)}
-              className={`flex items-center space-x-2 px-6 py-3 rounded-lg font-medium transition-all whitespace-nowrap cursor-pointer ${
-                activeTab === tab.key
+              className={`flex items-center space-x-2 px-6 py-3 rounded-lg font-medium transition-all whitespace-nowrap cursor-pointer ${activeTab === tab.key
                   ? "bg-blue-600 dark:bg-blue-500 text-white shadow-lg"
                   : "bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 border border-gray-200 dark:border-gray-700"
-              }`}
+                }`}
             >
               <i className={tab.icon}></i>
               <span>{tab.label}</span>
@@ -114,7 +112,6 @@ export default function Dashboard() {
       </main>
 
       <Footer />
-      <XAISanvadChatbot />
     </div>
   );
 }

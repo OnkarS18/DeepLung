@@ -1,4 +1,5 @@
 import os
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
 os.environ['OMP_NUM_THREADS'] = '1'
 os.environ['MKL_NUM_THREADS'] = '1'
 
@@ -9,14 +10,21 @@ from flask_cors import CORS
 from PIL import Image
 import io
 import base64
+import threading
 
 app = Flask(__name__)
 CORS(app)  # Enable CORS for frontend communication
 
-# Path to the ONNX model
+# Path to the ONNX model used for lightweight prediction
 MODEL_PATH = os.path.join(
     os.path.dirname(os.path.abspath(__file__)),
     "best_model.onnx"
+)
+
+# Original TensorFlow weights used only for real Grad-CAM generation
+TF_MODEL_PATH = os.path.join(
+    os.path.dirname(os.path.abspath(__file__)),
+    "best_model.hdf5"
 )
 
 # Class labels (must match training order)
@@ -47,6 +55,8 @@ session = ort.InferenceSession(
 
 input_name = session.get_inputs()[0].name
 output_name = session.get_outputs()[0].name
+_gradcam_model = None
+_gradcam_lock = threading.Lock()
 
 # Warmup
 print("Warming up model...")
@@ -64,6 +74,103 @@ def preprocess_image(file_path):
     img_array = img_array / 255.0  # Rescale as per training
     img_array = np.expand_dims(img_array, axis=0)
     return img_array
+
+
+def get_gradcam_model():
+    """Build the original Keras model lazily so normal prediction stays on ONNX."""
+    global _gradcam_model
+    if _gradcam_model is not None:
+        return _gradcam_model
+
+    with _gradcam_lock:
+        if _gradcam_model is not None:
+            return _gradcam_model
+
+        import h5py
+        import tensorflow as tf
+
+        tf.config.threading.set_intra_op_parallelism_threads(1)
+        tf.config.threading.set_inter_op_parallelism_threads(1)
+
+        base_model = tf.keras.applications.Xception(
+            weights='imagenet',
+            include_top=False,
+            input_shape=(IMAGE_SIZE[0], IMAGE_SIZE[1], 3)
+        )
+        model = tf.keras.models.Sequential([
+            base_model,
+            tf.keras.layers.GlobalAveragePooling2D(),
+            tf.keras.layers.Dense(4, activation='softmax')
+        ])
+
+        with h5py.File(TF_MODEL_PATH, 'r') as f:
+            dense_group = f['dense_8']['dense_8']
+            kernel = dense_group['kernel:0'][:]
+            bias = dense_group['bias:0'][:]
+            model.layers[-1].set_weights([kernel, bias])
+
+        _gradcam_model = model
+        return _gradcam_model
+
+
+def generate_gradcam(file_path, img_array, predicted_class_idx):
+    """Generate true Grad-CAM from the final Xception convolutional activation."""
+    import matplotlib as mpl
+    import tensorflow as tf
+    from tensorflow.keras.preprocessing import image
+
+    model = get_gradcam_model()
+    base_model = model.layers[0]
+
+    try:
+        grad_base = tf.keras.models.Model(
+            base_model.inputs,
+            base_model.get_layer('block14_sepconv2_act').output
+        )
+    except ValueError:
+        grad_base = base_model
+
+    with tf.GradientTape() as tape:
+        last_conv_layer_output = grad_base(img_array)
+        tape.watch(last_conv_layer_output)
+
+        x = model.layers[1](last_conv_layer_output)
+        preds = model.layers[2](x)
+        class_channel = preds[:, predicted_class_idx]
+
+    grads = tape.gradient(class_channel, last_conv_layer_output)
+    pooled_grads = tf.reduce_mean(grads, axis=(0, 1, 2))
+
+    last_conv_layer_output = last_conv_layer_output[0]
+    heatmap = last_conv_layer_output @ pooled_grads[..., tf.newaxis]
+    heatmap = tf.squeeze(heatmap)
+    heatmap = tf.maximum(heatmap, 0)
+    heatmap = heatmap ** 2
+    heatmap = heatmap / (tf.math.reduce_max(heatmap) + 1e-10)
+    heatmap = heatmap.numpy()
+
+    original_img = image.load_img(file_path)
+    original_img_array = image.img_to_array(original_img)
+
+    heatmap_uint8 = np.uint8(255 * heatmap)
+    jet = mpl.colormaps['jet']
+    jet_colors = jet(np.arange(256))[:, :3]
+    jet_heatmap = jet_colors[heatmap_uint8]
+
+    jet_heatmap = image.array_to_img(jet_heatmap)
+    jet_heatmap = jet_heatmap.resize(
+        (original_img_array.shape[1], original_img_array.shape[0]),
+        Image.BICUBIC
+    )
+    jet_heatmap = image.img_to_array(jet_heatmap)
+
+    superimposed_img = np.clip(jet_heatmap * 0.35 + original_img_array * 0.65, 0, 255)
+    superimposed_img = image.array_to_img(superimposed_img)
+
+    buffered = io.BytesIO()
+    superimposed_img.save(buffered, format="JPEG", quality=90)
+    img_str = base64.b64encode(buffered.getvalue()).decode("utf-8")
+    return f"data:image/jpeg;base64,{img_str}"
 
 
 @app.route('/predict', methods=['POST'])
@@ -89,25 +196,12 @@ def predict():
         predicted_class_idx = int(np.argmax(pred))
         confidence = float(pred[predicted_class_idx]) * 100
 
-        # Simple heatmap placeholder (Grad-CAM requires TF gradients, not available with ONNX)
-        # The frontend already handles missing/error gradCamUrl gracefully
-        gradcam_url = None
-
-        # Try to generate a simple activation-based visualization using PIL
         try:
-            original_img = Image.open(temp_path).convert('RGB')
-            # Create a simple confidence-based overlay color (red for cancer, green for normal)
-            overlay_color = (255, 0, 0) if predicted_class_idx != 2 else (0, 255, 0)
-            overlay_img = Image.new("RGB", original_img.size, overlay_color)
-            # Blend the original image with the solid color overlay (70% original, 30% overlay)
-            blended = Image.blend(original_img, overlay_img, 0.3)
-
-            buffered = io.BytesIO()
-            blended.save(buffered, format="JPEG")
-            img_str = base64.b64encode(buffered.getvalue()).decode("utf-8")
-            gradcam_url = f"data:image/jpeg;base64,{img_str}"
+            gradcam_url = generate_gradcam(temp_path, img_array, predicted_class_idx)
         except Exception as e:
-            print(f"Overlay generation failed: {e}")
+            print(f"Grad-CAM generation failed: {e}")
+            import traceback
+            traceback.print_exc()
             gradcam_url = None
 
         result = {

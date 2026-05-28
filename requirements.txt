@@ -4,3 +4,6 @@ numpy>=1.26.0
 onnxruntime>=1.16.0
 pillow>=10.2.0
 gunicorn>=21.2.0
+tensorflow-cpu>=2.16.0
+h5py>=3.10.0
+matplotlib>=3.8.0

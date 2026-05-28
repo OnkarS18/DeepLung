@@ -75,14 +75,28 @@ export default function MethodologySection() {
           <h2 className="text-4xl md:text-5xl font-bold text-gray-800 dark:text-white mb-6">
             Methodology & Process Flow
           </h2>
-          <p className="text-xl text-gray-600 dark:text-gray-400 max-w-4xl mx-auto leading-relaxed">
+          <p className="text-xl text-gray-600 dark:text-gray-400 max-w-4xl mx-auto leading-relaxed mb-10">
             A systematic approach to developing an AI-driven lung cancer
             detection system through rigorous research, development, and
             validation phases.
           </p>
+
+          {/* Premium Project Plan Image Container */}
+          <div className="max-w-5xl mx-auto mb-16 px-2">
+            <div className="relative group overflow-hidden rounded-2xl bg-white dark:bg-gray-800/40 p-4 md:p-6 border border-slate-100 dark:border-gray-800/80 shadow-sm transition-all duration-500 hover:shadow-xl hover:border-blue-200/60 dark:hover:border-blue-900/60">
+              {/* Subtle hover gradient glow */}
+              <div className="absolute inset-0 bg-gradient-to-tr from-blue-500/5 via-transparent to-green-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none rounded-2xl"></div>
+
+              <img
+                src="/project_plan.png"
+                alt="DeepLung Project Plan Timeline"
+                className="w-full h-auto max-h-[600px] object-contain mx-auto rounded-xl select-none transition-transform duration-500 group-hover:scale-[1.005] dark:brightness-95"
+              />
+            </div>
+          </div>
         </div>
 
-        <div className="mb-16">
+        {/* <div className="mb-16">
           <Card className="p-8">
             <h3 className="text-2xl font-bold text-gray-800 dark:text-white mb-6 text-center">
               Project Timeline & Gantt Chart
@@ -99,7 +113,7 @@ export default function MethodologySection() {
               development and thorough validation.
             </p>
           </Card>
-        </div>
+        </div> */}
 
         <div className="space-y-8">
           {processSteps.map((step, index) => (

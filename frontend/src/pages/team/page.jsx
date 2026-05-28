@@ -1,6 +1,5 @@
 import Header from "../../components/feature/Header";
 import Footer from "../../components/feature/Footer";
-import XAISanvadChatbot from "../../components/feature/XAISanvadChatbot";
 import TeamSection from "../home/components/TeamSection";
 
 export default function TeamPage() {
@@ -11,7 +10,6 @@ export default function TeamPage() {
         <TeamSection />
       </div>
       <Footer />
-      <XAISanvadChatbot />
     </div>
   );
 }

@@ -30,7 +30,7 @@ export default function Footer() {
               <p className="text-gray-300">Dr. Aswathy M. A.</p>
               <p className="text-gray-400">Associate Professor</p>
               <p className="text-gray-400">
-                Department of Electronics & Telecommunication Engineering
+                Department of E&TC Engineering
               </p>
             </div>
           </div>
@@ -39,18 +39,19 @@ export default function Footer() {
             <h4 className="text-lg font-semibold mb-4">Institution</h4>
             <div className="space-y-2">
               <p className="text-gray-300">
-                Department of Electronics & Telecommunication Engineering
+                Department of E&TC Engineering
               </p>
-              <p className="text-gray-400">B.Tech Major Project 2024</p>
-              <div className="flex space-x-4 mt-4">
+              <p className="text-gray-400">B.Tech Major Project 2025-26</p>
+              <div className="flex space-x-5 mt-4 pl-18">
                 <a
-                  href="mailto:deeplung.project@gmail.com"
+                  href="mailto:onkarsorde@gmail.com"
                   className="text-blue-400 hover:text-blue-300 cursor-pointer"
                 >
                   <i className="ri-mail-line text-xl"></i>
                 </a>
+
                 <a
-                  href="#"
+                  href="https://github.com/OnkarS18/DeepLung"
                   className="text-blue-400 hover:text-blue-300 cursor-pointer"
                 >
                   <i className="ri-github-line text-xl"></i>
@@ -62,7 +63,7 @@ export default function Footer() {
 
         <div className="border-t border-gray-800 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
           <p className="text-gray-400 text-sm">
-            © 2024 DeepLung Project. All rights reserved.
+            © 2025 DeepLung Project. All rights reserved.
           </p>
           <div className="flex items-center space-x-6 mt-4 md:mt-0">
             <a

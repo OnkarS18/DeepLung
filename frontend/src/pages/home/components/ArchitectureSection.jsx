@@ -95,29 +95,24 @@ export default function ArchitectureSection() {
           <h2 className="text-4xl md:text-5xl font-bold text-gray-800 mb-6">
             System Architecture
           </h2>
-          <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
+          <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed mb-10">
             A comprehensive, modular architecture designed for scalability,
             security, and clinical integration.
           </p>
-        </div>
 
-        <div className="mb-16">
-          <Card className="p-8">
-            <h3 className="text-2xl font-bold text-gray-800 mb-6 text-center">
-              Architecture Overview
-            </h3>
-            <div
-              className="w-full h-96 bg-cover bg-center rounded-xl mb-6"
-              style={{
-                backgroundImage: `url('https://readdy.ai/api/search-image?query=Professional%20system%20architecture%20diagram%20showing%20AI%20medical%20system%20modules%2C%20clean%20technical%20illustration%2C%20modular%20design%20with%20interconnected%20components%2C%20data%20flow%20visualization%2C%20modern%20healthcare%20technology%20stack%2C%20blue%20and%20green%20color%20scheme%2C%20professional%20technical%20documentation%20style&width=1200&height=600&seq=architecture-diagram&orientation=landscape')`,
-              }}
-            ></div>
-            <p className="text-gray-600 text-center leading-relaxed">
-              The DeepLung system follows a microservices architecture with
-              clearly defined modules, ensuring maintainability, scalability,
-              and seamless integration with existing healthcare systems.
-            </p>
-          </Card>
+          {/* Premium System Architecture Image Container */}
+          <div className="max-w-5xl mx-auto mb-16 px-2">
+            <div className="relative group overflow-hidden rounded-2xl bg-slate-50/50 p-4 md:p-6 border border-slate-100 shadow-sm transition-all duration-500 hover:shadow-xl hover:border-blue-200/60 hover:bg-white">
+              {/* Subtle hover gradient glow */}
+              <div className="absolute inset-0 bg-gradient-to-tr from-blue-500/5 via-transparent to-green-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none rounded-2xl"></div>
+              
+              <img
+                src="/system_architecture.png"
+                alt="DeepLung System Architecture Diagram"
+                className="w-full h-auto max-h-[600px] object-contain mx-auto rounded-xl select-none transition-transform duration-500 group-hover:scale-[1.005]"
+              />
+            </div>
+          </div>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -136,10 +131,10 @@ export default function ArchitectureSection() {
                 {module.features.map((feature, featureIndex) => (
                   <li
                     key={featureIndex}
-                    className="flex items-center space-x-2 text-sm text-gray-500"
+                    className="flex items-start space-x-2 text-sm text-gray-500"
                   >
-                    <div className="w-1.5 h-1.5 bg-blue-500 rounded-full"></div>
-                    <span>{feature}</span>
+                    <div className="w-1.5 h-1.5 bg-blue-500 rounded-full mt-1.5 flex-shrink-0"></div>
+                    <span className="flex-1">{feature}</span>
                   </li>
                 ))}
               </ul>
@@ -153,40 +148,86 @@ export default function ArchitectureSection() {
               Technology Stack
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              <div>
-                <h4 className="text-lg font-semibold text-blue-600 mb-4">
-                  Machine Learning
+              {/* Deep Learning Column */}
+              <div className="flex flex-col">
+                <h4 className="text-lg font-semibold text-blue-600 mb-4 h-12 flex items-start">
+                  Deep Learning
                 </h4>
                 <ul className="space-y-2 text-gray-600">
-                  <li>• TensorFlow & Keras</li>
-                  <li>• PyTorch</li>
-                  <li>• OpenCV</li>
-                  <li>• Scikit-learn</li>
-                  <li>• Grad-CAM</li>
+                  <li className="flex items-start">
+                    <span className="mr-2">•</span>
+                    <span>TensorFlow & Keras</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="mr-2">•</span>
+                    <span>PyTorch</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="mr-2">•</span>
+                    <span>OpenCV</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="mr-2">•</span>
+                    <span>Scikit-learn</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="mr-2">•</span>
+                    <span>Grad-CAM</span>
+                  </li>
                 </ul>
               </div>
-              <div>
-                <h4 className="text-lg font-semibold text-green-600 mb-4">
+
+              {/* Backend & Database Column */}
+              <div className="flex flex-col">
+                <h4 className="text-lg font-semibold text-green-600 mb-4 h-12 flex items-start">
                   Backend & Database
                 </h4>
                 <ul className="space-y-2 text-gray-600">
-                  <li>• Python Flask/Django</li>
-                  <li>• PostgreSQL</li>
-                  <li>• Redis Cache</li>
-                  <li>• AWS/Azure Cloud</li>
-                  <li>• Docker Containers</li>
+                  <li className="flex items-start">
+                    <span className="mr-2">•</span>
+                    <span>Python Flask/Django</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="mr-2">•</span>
+                    <span>Render</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="mr-2">•</span>
+                    <span>Redis Cache</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="mr-2">•</span>
+                    <span>Docker Containers</span>
+                  </li>
                 </ul>
               </div>
-              <div>
-                <h4 className="text-lg font-semibold text-purple-600 mb-4">
+
+              {/* Frontend & Security Column */}
+              <div className="flex flex-col">
+                <h4 className="text-lg font-semibold text-purple-600 mb-4 h-12 flex items-start">
                   Frontend & Security
                 </h4>
                 <ul className="space-y-2 text-gray-600">
-                  <li>• React.js</li>
-                  <li>• TypeScript</li>
-                  <li>• JWT Authentication</li>
-                  <li>• SSL/TLS Encryption</li>
-                  <li>• HIPAA Compliance</li>
+                  <li className="flex items-start">
+                    <span className="mr-2">•</span>
+                    <span>React.js</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="mr-2">•</span>
+                    <span>Vite</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="mr-2">•</span>
+                    <span>TypeScript</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="mr-2">•</span>
+                    <span>JWT Authentication</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="mr-2">•</span>
+                    <span>HIPAA Compliance</span>
+                  </li>
                 </ul>
               </div>
             </div>

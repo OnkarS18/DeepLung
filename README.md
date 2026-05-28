@@ -28,7 +28,8 @@ Using an optimized **Xception** architecture, the backend performs inference on 
 
 ### Backend
 * **Python 3.12** & **Flask**
-* **TensorFlow CPU** (Optimized for cloud-container hosting memory footprint)
+* **ONNX Runtime** (Lightweight prediction serving)
+* **TensorFlow CPU** (Lazy-loaded for real Grad-CAM generation)
 * **Matplotlib & Pillow** (Image processing and heatmap generation)
 * **Gunicorn** (Production-grade WSGI HTTP Server)
 
@@ -38,9 +39,6 @@ Using an optimized **Xception** architecture, the backend performs inference on 
 
 ```text
 DeepLung/
-├── Lung-Cancer-Prediction-using-CNN-and-Transfer-Learning-main/
-│   └── Lung-Cancer-Prediction-using-CNN-and-Transfer-Learning-main/
-│       └── best_model.hdf5      # Trained TensorFlow model weights (83.6MB)
 ├── frontend/                     # React + Vite client application
 │   ├── src/
 │   │   ├── components/           # UI and feature components
@@ -48,6 +46,9 @@ DeepLung/
 │   ├── package.json
 │   └── vite.config.js
 ├── app.py                        # Flask API entrypoint
+├── best_model.hdf5               # Trained TensorFlow weights for Grad-CAM
+├── best_model.onnx               # ONNX model for prediction
+├── convert_to_onnx.py            # Model conversion helper
 ├── requirements.txt              # Production Python dependencies
 ├── render.yaml                   # Infrastructure-as-code blueprint for Render
 ├── start.bat                     # Local launch script for Windows
@@ -151,7 +152,7 @@ Render automatically handles deployment using the root `render.yaml` Blueprint f
 
 ## 🧠 Model & Grad-CAM Methodology
 
-* **Inference Pipeline**: The Flask API loads the `Xception` base network pre-trained on ImageNet. Custom classification heads are then mapped to the dense layers trained on the CT scan dataset (weights loaded from `best_model.hdf5`).
+* **Inference Pipeline**: The Flask API serves predictions with `best_model.onnx` through ONNX Runtime. For Grad-CAM, it lazily rebuilds the original `Xception` model and loads the trained dense weights from `best_model.hdf5`.
 * **Input Dimension**: Rescaled to `350x350` RGB images.
 * **Explainability (Grad-CAM)**: The API targets the output activation map of `block14_sepconv2_act` (the final convolutional layer of Xception) and monitors the gradients of the predicted class score relative to this map. It then computes weighted activations, applies a ReLU filter, sharpens features, and overlays a jet-color heatmap onto the original CT scan to identify lesion boundaries and nodule clusters.
 

@@ -1,6 +1,5 @@
 import Header from "../../components/feature/Header";
 import Footer from "../../components/feature/Footer";
-import XAISanvadChatbot from "../../components/feature/XAISanvadChatbot";
 import AboutSection from "../home/components/AboutSection";
 
 export default function AboutPage() {
@@ -11,7 +10,6 @@ export default function AboutPage() {
         <AboutSection />
       </div>
       <Footer />
-      <XAISanvadChatbot />
     </div>
   );
 }

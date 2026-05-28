@@ -50,7 +50,7 @@ export default function ContactSection() {
       } else {
         setSubmitStatus("error");
       }
-    } catch (error) {
+    } catch {
       setSubmitStatus("error");
     } finally {
       setIsSubmitting(false);
@@ -61,25 +61,25 @@ export default function ContactSection() {
     {
       icon: "ri-mail-line",
       title: "Email",
-      value: "deeplung.project@gmail.com",
+      value: "onkarsorde@gmail.com",
       description: "Send us your inquiries",
     },
     {
       icon: "ri-phone-line",
       title: "Project Guide",
       value: "Dr. Aswathy M. A.",
-      description: "Associate Professor, CSE Department",
+      description: "Associate Professor, E&TC Department",
     },
     {
       icon: "ri-building-line",
       title: "Institution",
-      value: "Computer Science & Engineering",
-      description: "B.Tech Major Project 2024",
+      value: "E&TC Engineering",
+      description: "B.Tech Major Project 2025-26",
     },
     {
       icon: "ri-github-line",
       title: "Project Repository",
-      value: "github.com/deeplung",
+      value: "github.com/OnkarS18/DeepLung",
       description: "View source code and documentation",
     },
   ];
@@ -277,12 +277,12 @@ export default function ContactSection() {
                 </div>
 
                 <div className="mb-6">
-                    <label
-                      htmlFor="message"
-                      className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
-                    >
-                      Message *
-                    </label>
+                  <label
+                    htmlFor="message"
+                    className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
+                  >
+                    Message *
+                  </label>
                   <textarea
                     id="message"
                     name="message"

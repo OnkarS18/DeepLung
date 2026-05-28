@@ -30,6 +30,8 @@ dist-ssr
 
 # Python / Extraction
 /temp_ts_compile/
+__pycache__/
+*.py[cod]
 *.tmp
 download_src.py
 
@@ -40,6 +42,18 @@ ENV/
 
 # Large Datasets (Not required for prediction API)
 **/dataset/
+
+# Large model files (ONNX is already tracked, HDF5 not needed)
+best_model.hdf5
+
+# Root-level duplicate files (originals in frontend/)
+/Video1.mp4
+/Video2.mp4
+/onkar_photo.png
+/pratiksha_photo.jpeg
+/sanvhita_photo.jpg
+/project_plan.png
+/system_architecture.png
 
 # User test files in root
 /IMG_2370.HEIC

@@ -9,8 +9,6 @@ import tf2onnx
 IMAGE_SIZE = (350, 350)
 MODEL_PATH = os.path.join(
     os.path.dirname(os.path.abspath(__file__)),
-    "Lung-Cancer-Prediction-using-CNN-and-Transfer-Learning-main",
-    "Lung-Cancer-Prediction-using-CNN-and-Transfer-Learning-main",
     "best_model.hdf5"
 )
 OUTPUT_ONNX = os.path.join(

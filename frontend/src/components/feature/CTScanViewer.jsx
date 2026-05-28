@@ -20,7 +20,6 @@ export default function CTScanViewer() {
       formData.append("file", file);
 
       try {
-        console.log(`Analyzing file: ${file.name}...`);
         const API_BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:5000";
         const response = await fetch(`${API_BASE_URL}/predict`, {
           method: "POST",
@@ -32,11 +31,11 @@ export default function CTScanViewer() {
         }
 
         const result = await response.json();
-        
+
         const isBenign = result.prediction.toLowerCase() === "normal";
         const malignantConf = result.all_predictions ? (100 - result.all_predictions["Normal"]) : (isBenign ? (100 - result.confidence) : result.confidence);
         const finalConfidence = isBenign ? (result.all_predictions ? result.all_predictions["Normal"] : result.confidence) : malignantConf;
-        
+
         const originalImgUrl = URL.createObjectURL(file);
 
         newScans.push({
@@ -56,10 +55,10 @@ export default function CTScanViewer() {
       } catch (error) {
         console.error(`Error analyzing ${file.name}:`, error);
         // Fallback or error scan entry
-        const errorLabel = error.message.includes("fetch") 
-          ? "Backend Offline" 
+        const errorLabel = error.message.includes("fetch")
+          ? "Backend Offline"
           : "Analysis Failed";
-          
+
         newScans.push({
           id: `scan-error-${Date.now()}-${i}`,
           fileName: file.name,
@@ -102,6 +101,37 @@ export default function CTScanViewer() {
 
   return (
     <div className="space-y-6">
+      {/* Demo Video Section */}
+      <Card className="p-6">
+        <div className="flex items-center gap-3 mb-4">
+          <div className="w-10 h-10 bg-purple-100 dark:bg-purple-900/30 rounded-full flex items-center justify-center">
+            <i className="ri-video-line text-purple-600 dark:text-purple-400 text-lg"></i>
+          </div>
+          <div>
+            <h3 className="text-lg font-bold text-gray-800 dark:text-white">
+              How It Works
+            </h3>
+            <p className="text-sm text-gray-500 dark:text-gray-400">
+              Understanding Lung Cancer Through Medical Visualization
+            </p>
+          </div>
+        </div>
+        <div className="rounded-xl overflow-hidden border border-gray-200 dark:border-gray-700 bg-black">
+          <video
+            controls
+            muted
+            playsInline
+            preload="metadata"
+            className="w-full max-h-[480px] object-contain mx-auto"
+            onLoadedMetadata={(e) => {
+              e.target.currentTime = 2;
+            }}
+          >
+            <source src="/Video2.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      </Card>
       {/* Upload Section */}
       <Card className="p-6">
         <div className="text-center">
@@ -166,11 +196,10 @@ export default function CTScanViewer() {
               {uploadedScans.map((scan) => (
                 <div
                   key={scan.id}
-                  className={`p-4 border rounded-lg cursor-pointer transition-colors ${
-                    selectedScan?.id === scan.id
-                      ? "border-blue-500 bg-blue-50 dark:bg-blue-900/20"
-                      : "border-gray-200 dark:border-gray-700 hover:border-gray-300 dark:hover:border-gray-600"
-                  }`}
+                  className={`p-4 border rounded-lg cursor-pointer transition-colors ${selectedScan?.id === scan.id
+                    ? "border-blue-500 bg-blue-50 dark:bg-blue-900/20"
+                    : "border-gray-200 dark:border-gray-700 hover:border-gray-300 dark:hover:border-gray-600"
+                    }`}
                   onClick={() => setSelectedScan(scan)}
                 >
                   <div className="flex items-center justify-between mb-2">
@@ -220,11 +249,10 @@ export default function CTScanViewer() {
                   <div className="flex space-x-2">
                     <button
                       onClick={() => setShowGradCam(!showGradCam)}
-                      className={`px-3 py-1 rounded-lg text-sm font-medium transition-colors ${
-                        showGradCam
-                          ? "bg-blue-600 text-white"
-                          : "bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600"
-                      }`}
+                      className={`px-3 py-1 rounded-lg text-sm font-medium transition-colors ${showGradCam
+                        ? "bg-blue-600 text-white"
+                        : "bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600"
+                        }`}
                     >
                       <i className="ri-eye-line mr-1"></i>
                       Grad-CAM
@@ -299,13 +327,12 @@ export default function CTScanViewer() {
                   </h5>
                   <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-3 mb-2">
                     <div
-                      className={`h-3 rounded-full ${
-                        selectedScan.aiPrediction.riskScore >= 70
-                          ? "bg-red-500"
-                          : selectedScan.aiPrediction.riskScore >= 40
-                            ? "bg-orange-500"
-                            : "bg-green-500"
-                      }`}
+                      className={`h-3 rounded-full ${selectedScan.aiPrediction.riskScore >= 70
+                        ? "bg-red-500"
+                        : selectedScan.aiPrediction.riskScore >= 40
+                          ? "bg-orange-500"
+                          : "bg-green-500"
+                        }`}
                       style={{
                         width: `${selectedScan.aiPrediction.riskScore}%`,
                       }}

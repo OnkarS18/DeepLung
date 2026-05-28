@@ -1,4 +1,7 @@
 import Card from "../../../components/base/Card";
+import onkarPhoto from "../../../assets/team/onkar_photo.png";
+import pratikshaPhoto from "../../../assets/team/pratiksha_photo.jpeg";
+import sanvhitaPhoto from "../../../assets/team/sanvhita_photo.jpg";
 
 export default function TeamSection() {
   const teamMembers = [
@@ -38,8 +41,7 @@ export default function TeamSection() {
         "Research",
         "Statistical Analysis",
       ],
-      avatar:
-        "https://readdy.ai/api/search-image?query=Professional%20headshot%20of%20young%20Indian%20female%20computer%20science%20student%2C%20intelligent%20expression%2C%20clean%20background%2C%20formal%20attire%2C%20engineering%20student%20portrait%2C%20academic%20professional%20photo&width=300&height=300&seq=team-sanvihita&orientation=squarish",
+      avatar: sanvhitaPhoto,
     },
     {
       name: "Onkar",
@@ -52,8 +54,7 @@ export default function TeamSection() {
         "API development and integration",
       ],
       skills: ["Python", "Flask/Django", "PostgreSQL", "Cloud Computing"],
-      avatar:
-        "https://readdy.ai/api/search-image?query=Professional%20headshot%20of%20young%20Indian%20male%20computer%20science%20student%2C%20focused%20expression%2C%20clean%20background%2C%20formal%20attire%2C%20engineering%20student%20portrait%2C%20academic%20professional%20photo&width=300&height=300&seq=team-onkar&orientation=squarish",
+      avatar: onkarPhoto,
     },
     {
       name: "Pratiksha",
@@ -66,8 +67,7 @@ export default function TeamSection() {
         "Responsive design and testing",
       ],
       skills: ["React.js", "UI/UX Design", "TypeScript", "Responsive Design"],
-      avatar:
-        "https://readdy.ai/api/search-image?query=Professional%20headshot%20of%20young%20Indian%20female%20computer%20science%20student%2C%20creative%20expression%2C%20clean%20background%2C%20formal%20attire%2C%20engineering%20student%20portrait%2C%20academic%20professional%20photo&width=300&height=300&seq=team-pratiksha&orientation=squarish",
+      avatar: pratikshaPhoto,
     },
   ];
 
@@ -199,18 +199,16 @@ export default function TeamSection() {
                   <h5 className="font-semibold text-gray-800 dark:text-white mb-2 text-sm">
                     Key Responsibilities:
                   </h5>
-                  <ul className="space-y-1">
-                    {member.responsibilities.map(
-                      (responsibility, respIndex) => (
-                        <li
-                          key={respIndex}
-                          className="text-gray-600 dark:text-gray-400 text-xs leading-relaxed"
-                        >
-                          • {responsibility}
-                        </li>
-                      ),
-                    )}
-                  </ul>
+                  <div className="space-y-1">
+                    {member.responsibilities.map((responsibility, respIndex) => (
+                      <div key={respIndex} className="text-left flex items-start">
+                        <span className="text-gray-600 dark:text-gray-400 mr-2">•</span>
+                        <span className="text-gray-600 dark:text-gray-400 text-xs leading-relaxed">
+                          {responsibility}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
                 </div>
 
                 <div>

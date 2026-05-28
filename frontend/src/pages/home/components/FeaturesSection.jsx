@@ -111,10 +111,7 @@ export default function FeaturesSection() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
           {keyFeatures.map((feature, index) => {
             const colorClasses = getColorClasses(feature.color);
-            const [gradientClasses, iconBgClasses, iconTextClasses] =
-              colorClasses.split(" bg-")[0].split(" text-")[0].split(" ");
-            const iconBg = colorClasses.split(" ")[1];
-            const iconText = colorClasses.split(" ")[2];
+            const gradientClasses = colorClasses.split(" bg-")[0];
             return (
               <Card key={index} className="p-6 hover h-full" hover>
                 <div
@@ -263,7 +260,7 @@ export default function FeaturesSection() {
 
               <div className="flex items-center space-x-4">
                 <div className="w-12 h-12 bg-orange-100 dark:bg-orange-900/40 rounded-full flex items-center justify-center">
-                  <i className="ri-api-line text-orange-600 dark:text-orange-400 text-xl"></i>
+                  <i className="ri-share-line text-orange-600 dark:text-orange-400 text-xl"></i>
                 </div>
                 <div>
                   <h4 className="font-semibold text-gray-800 dark:text-white">

@@ -1,6 +1,5 @@
 import Header from "../../components/feature/Header";
 import Footer from "../../components/feature/Footer";
-import XAISanvadChatbot from "../../components/feature/XAISanvadChatbot";
 import HeroSection from "./components/HeroSection";
 
 export default function Home() {
@@ -10,7 +9,6 @@ export default function Home() {
       <HeroSection />
       {/* High-level overview could go here, or just keep it as a landing page */}
       <Footer />
-      <XAISanvadChatbot />
     </div>
   );
 }

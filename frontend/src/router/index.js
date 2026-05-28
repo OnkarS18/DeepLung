@@ -1,5 +1,4 @@
-import { useNavigate } from "react-router-dom";
-import { useRoutes } from "react-router-dom";
+import { useNavigate, useRoutes } from "react-router-dom";
 import { useEffect } from "react";
 import routes from "./config";
 
@@ -11,12 +10,14 @@ export const navigatePromise = new Promise((resolve) => {
 
 export function AppRoutes() {
   const element = useRoutes(routes);
-  if (!window.REACT_APP_NAVIGATE) {
-    const navigate = useNavigate();
-    useEffect(() => {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!window.REACT_APP_NAVIGATE) {
       window.REACT_APP_NAVIGATE = navigate;
       navigateResolver(window.REACT_APP_NAVIGATE);
-    });
-  }
+    }
+  }, [navigate]);
+
   return element;
 }

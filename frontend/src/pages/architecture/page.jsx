@@ -1,6 +1,5 @@
 import Header from "../../components/feature/Header";
 import Footer from "../../components/feature/Footer";
-import XAISanvadChatbot from "../../components/feature/XAISanvadChatbot";
 import ArchitectureSection from "../home/components/ArchitectureSection";
 import MethodologySection from "../home/components/MethodologySection";
 
@@ -13,7 +12,6 @@ export default function ArchitecturePage() {
         <MethodologySection />
       </div>
       <Footer />
-      <XAISanvadChatbot />
     </div>
   );
 }

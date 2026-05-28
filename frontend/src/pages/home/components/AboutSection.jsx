@@ -3,13 +3,13 @@ import Card from "../../../components/base/Card";
 export default function AboutSection() {
   const objectives = [
     {
-      icon: "ri-target-line",
+      icon: "ri-search-line",
       title: "Early Detection",
       description:
         "Implement AI algorithms to detect lung cancer at early stages when treatment is most effective",
     },
     {
-      icon: "ri-accuracy-line",
+      icon: "ri-bar-chart-line",
       title: "High Accuracy",
       description:
         "Achieve superior accuracy in nodule classification compared to traditional methods",
@@ -63,7 +63,7 @@ export default function AboutSection() {
               <h3 className="text-2xl font-bold text-gray-800 dark:text-white mb-4">
                 Project Overview
               </h3>
-              <p className="text-gray-600 dark:text-gray-300 leading-relaxed mb-6">
+              <p className="text-gray-600 dark:text-gray-300 leading-relaxed mb-6 text-justify">
                 DeepLung is an innovative AI-driven system designed to assist
                 healthcare professionals in the early detection and
                 classification of lung cancer through automated analysis of CT
@@ -72,7 +72,7 @@ export default function AboutSection() {
                 and ensemble methods, to identify suspicious nodules with high
                 precision.
               </p>
-              <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
+              <p className="text-gray-600 dark:text-gray-300 leading-relaxed mb-6 text-justify">
                 The system integrates multiple AI models, provides explainable
                 results through visualization techniques, and maintains strict
                 data privacy standards to support clinical decision-making in
@@ -89,13 +89,13 @@ export default function AboutSection() {
               <h3 className="text-2xl font-bold text-gray-800 dark:text-white mb-4">
                 Problem Statement
               </h3>
-              <p className="text-gray-600 dark:text-gray-300 leading-relaxed mb-6">
+              <p className="text-gray-600 dark:text-gray-300 leading-relaxed mb-6 text-justify">
                 Lung cancer remains the leading cause of cancer-related deaths
                 worldwide, with over 1.8 million deaths annually. Early
                 detection is crucial, as the 5-year survival rate increases from
                 18% to 56% when caught in early stages.
               </p>
-              <ul className="space-y-3 text-gray-600 dark:text-gray-400">
+              <ul className="space-y-3 text-gray-600 dark:text-gray-400 text-justify">
                 <li className="flex items-start space-x-3">
                   <i className="ri-arrow-right-circle-line text-red-500 mt-1"></i>
                   <span>
